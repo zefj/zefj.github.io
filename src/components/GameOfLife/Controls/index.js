@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import BoatIcon from './BoatIcon';
 
@@ -29,6 +30,15 @@ class Controls extends Component {
     this.setState({ open: false });
   }
 
+  pauseButton() {
+    return (
+      <i
+        className={`fa fa-${this.props.isPaused ? 'play' : 'pause' }`}
+        onClick={this.props.onPauseResumeClick}
+      />
+    );
+  }
+
   render() {
     return (
       <div className="game-of-life__controls">
@@ -42,11 +52,13 @@ class Controls extends Component {
           tabIndex="0"
           ref={(controls) => { this.controls = controls; }} 
           className={`game-of-life__panel ${this.state.open ? 'active' : ''}`}
-          onMouseLeave={this.closeControls}
-          onBlur={this.closeControls}
+          // onMouseLeave={this.closeControls}
+          // onBlur={this.closeControls}
         >
-          <div className="panel-header">
-            Literature adds to reality, it does not simply describe it. It enriches the necessary competencies that daily life requires and provides; and in this respect, it irrigates the deserts that our lives have already become.
+          <div className="game-of-life__panel-controls">
+            {
+              this.pauseButton()
+            }
           </div>
           <div className="panel-body">
             C.S. Lewis
@@ -55,6 +67,18 @@ class Controls extends Component {
       </div>
     );
   }
+}
+
+Controls.propTypes = {
+  isPaused: PropTypes.bool,
+  onPauseResumeClick: PropTypes.func,
+  onStartAgainClick: PropTypes.func,
+}
+
+Controls.defaultProps = {
+  isPaused: false,
+  onPauseResumeClick: () => {},
+  onStartAgainClick: () => {},
 }
 
 export default Controls;

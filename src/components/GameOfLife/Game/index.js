@@ -21,6 +21,8 @@ class GameOfLife extends Component {
     this.interval = null;
     this.init = this.init.bind(this);
     this.updateCanvas = this.updateCanvas.bind(this);
+
+    this.paused = false;
   }
 
   componentDidMount() {
@@ -66,10 +68,12 @@ console.info('columns', columns);
     // @TODO: variable animation speed OR variable grid cell
     // Implementation: check handler execution time, and slow it down as necessary
     this.interval = setInterval(this.updateCanvas, 20);
+    this.paused = false;
   }
 
   pause() {
     clearInterval(this.interval);
+    this.paused = true;
   }
 
   updateCanvas() {
