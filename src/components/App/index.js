@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import GameOfLife from '../GameOfLifeCanvas';
+import GameOfLife from '../GameOfLife';
 
 import './styles.css';
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 
-import * as life from '../../lib/game-of-life'
+import * as life from '../../../lib/game-of-life'
 
 import './styles.css';
 
