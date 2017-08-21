@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import BoatIcon from './BoatIcon';
+
 import './styles.css';
 
 class Controls extends Component {
@@ -34,7 +36,7 @@ class Controls extends Component {
           className="game-of-life__toggle" 
           onClick={this.openControls}
         >
-          1
+          <BoatIcon />
         </div>
         <div
           tabIndex="0"
