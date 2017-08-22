@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 
-import Game from './Game/controller';
+import _ from 'lodash';
+
+import Game from '../../lib/game-of-life/controller';
+import CanvasDrawer from '../../lib/game-of-life/canvasDrawer';
 import Controls from './Controls';
+
+const gridSize = 4;
 
 class GameOfLife extends Component {
   constructor(props) {
@@ -14,20 +19,81 @@ class GameOfLife extends Component {
     }
 
     this.handlePauseResumeClick = this.handlePauseResumeClick.bind(this);
+    this.registerResizeEventListener = this.registerResizeEventListener.bind(this);
   }
 
   componentDidMount() {
-    this.initializeGameController()
+    this.initializeGame()
   }
 
-  initializeGameController() {
-    this.game = new Game(this.canvas);
+  registerResizeEventListener() {
+    let resizeTimer;
+    let wasPaused;
 
-    this.game.init()
-      .then(this.game.registerStateChangedHandler(() => { this.forceUpdate() }))
-      .then(this.game.start)
+    window.addEventListener("resize", () => {
+      // Save the state
+      if (wasPaused === undefined) wasPaused = this.game.paused;
 
-    this.setState({ gameReady: true })
+      this.game.pause();
+      // Debounce game of life reinitialization on window resize
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        this.canvasDrawer.init({
+          ...this.getCanvasDimensions(),
+          gridSize,
+        });
+
+        this.game.init({
+          ...this.getWorldDimensions(),
+          gridSize,
+        })
+          .then(() => {
+            if (!wasPaused) {
+              this.game.start();
+            }
+            wasPaused = undefined;
+          });
+      }, 250);
+    });
+  }
+
+  initializeGame() {
+    this.canvasDrawer = new CanvasDrawer(this.canvas);
+    this.game = new Game(this.canvasDrawer);
+
+    this.canvasDrawer.init({
+      ...this.getCanvasDimensions(),
+      gridSize,
+    });
+
+    return this.game.init({
+      ...this.getWorldDimensions(),
+      gridSize,
+    })
+      .then(this.game.registerStateChangedListener(() => { this.forceUpdate() }))
+      .then(() => { this.setState({ gameReady: true }) })
+      .then(this.registerResizeEventListener)
+      .then(this.game.start);
+  }
+
+  getWorldDimensions() {
+    const rows = _.floor(window.innerHeight / gridSize);
+    const columns = _.floor(window.innerWidth / gridSize);
+
+    return {
+      rows,
+      columns,
+    }
+  }
+
+  getCanvasDimensions() {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    return {
+      width,
+      height,
+    }
   }
 
   handlePauseResumeClick() {
