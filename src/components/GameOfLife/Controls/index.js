@@ -17,7 +17,7 @@ class Controls extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.open) {
+    if (this.state.open && this.controls !== document.activeElement) {
       this.controls.focus();
     }
   }
@@ -52,7 +52,6 @@ class Controls extends Component {
           tabIndex="0"
           ref={(controls) => { this.controls = controls; }} 
           className={`game-of-life__panel ${this.state.open ? 'active' : ''}`}
-          // onMouseLeave={this.closeControls}
           // onBlur={this.closeControls}
         >
           <div className="game-of-life__panel-controls">
