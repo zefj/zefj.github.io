@@ -6,6 +6,8 @@ import Game from '../../lib/game-of-life/controller';
 import CanvasDrawer from '../../lib/game-of-life/canvasDrawer';
 import Controls from './Controls';
 
+import './styles.css';
+
 const gridSize = 4;
 
 class GameOfLife extends Component {
@@ -77,8 +79,8 @@ class GameOfLife extends Component {
   }
 
   getWorldDimensions() {
-    const rows = _.floor(window.innerHeight / gridSize);
-    const columns = _.floor(window.innerWidth / gridSize);
+    const rows = _.floor(document.body.clientHeight / gridSize);
+    const columns = _.floor(document.body.clientWidth / gridSize);
 
     return {
       rows,
@@ -87,9 +89,9 @@ class GameOfLife extends Component {
   }
 
   getCanvasDimensions() {
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-
+    const width = document.body.clientWidth;
+    const height = document.body.clientHeight;
+console.info('width', width, 'height', height);
     return {
       width,
       height,

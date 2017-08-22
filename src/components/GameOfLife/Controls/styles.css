@@ -1,8 +1,9 @@
 .game-of-life__controls {
-	position: absolute;
+	position: fixed;
 	bottom: 3rem;
 	right: 3rem;
 }
+
 .game-of-life__controls .game-of-life__toggle {
 	display: inline-block;
 	position: relative;
@@ -22,6 +23,7 @@
 	transition:0.2s opacity ease-in-out;
 	-webkit-transition:0.2s opacity ease-in-out;
 }
+
 .game-of-life__controls .game-of-life__panel {
 	box-shadow: 0 0 5px rgba(0,0,0,0.15);
 	position: absolute;
@@ -36,14 +38,17 @@
 	transition: transform 0.2s, visibility 0s 0.2s, opacity 0.2s;
 	opacity: 0;
 }
+
 .game-of-life__panel {
   background-color: white;
   border-radius: 4px;
   padding: 1rem;
 }
+
 .game-of-life__panel:focus {
   outline: initial; 
 }
+
 .game-of-life__controls .game-of-life__panel.active {
 	height: auto;
 	opacity: 1;
@@ -51,22 +56,7 @@
 	transform: scale(1);
 	transition: transform 0.2s, visibility 0s 0s, opacity 0.2s;
 }
-/*.game-of-life__controls .panel-header {
-	padding: 20px;
-	font-size: 15px;
-	background-color: #1D70A2;
-	color: #fff;
-	border-top-left-radius: 4px;
-	border-top-right-radius: 4px;
-}
-.game-of-life__controls .panel-body {
-	padding: 10px 20px;
-	background-color: #fff;
-	border-bottom-left-radius: 4px;
-	border-bottom-right-radius: 4px;
-	font-size: 11px;
-	color: #aaa;
-}*/
+
 
 .game-of-life__panel-controls {
 	font-size: 15px;
