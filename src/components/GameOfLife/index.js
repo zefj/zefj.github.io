@@ -8,7 +8,7 @@ import Controls from './Controls';
 
 import './styles.css';
 
-const gridSize = 4;
+const gridSize = 5;
 
 class GameOfLife extends Component {
   constructor(props) {

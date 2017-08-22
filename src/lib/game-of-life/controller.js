@@ -11,9 +11,9 @@ const seeder = (x, y, seed, chance) => {
 const defaultOptions = {
   // seed for pseudorandom number generator
   // for two identical conditions, the same seed will yield the same initial state
-  seed: 6667,
+  seed: 666,
   // chance for cell to become alive during seeding
-  chance: 0.07,
+  chance: 0.12,
   rows: 200,
   columns: 200,
 };
@@ -62,6 +62,7 @@ class GameOfLifeController {
   start() {
     // @TODO: variable animation speed OR variable grid cell
     // Implementation: check handler execution time, and slow it down as necessary
+    // OR throttling?
     this.interval = setInterval(this.__update, 20);
     this.paused = false;
     this.__notifyStateChanged();
