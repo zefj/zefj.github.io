@@ -39,6 +39,14 @@
 	box-sizing: border-box;
 }
 
+.game-of-life__panel > * {
+	margin-bottom: 15px;
+}
+
+.game-of-life__panel > *:last-child {
+	margin-bottom: 5px;
+}
+
 @media (max-width: 768px) { 
 	.game-of-life__toggle {
 		bottom: 1rem;
@@ -70,14 +78,17 @@
 	transition: transform 0.2s, visibility 0s 0s, opacity 0.2s;
 }
 
-.game-of-life__panel-controls {
-	font-size: 15px;
-	height: 30px;
-	border-bottom: solid 1px grey;
+.game-of-life__panel-header {
+	font-size: 1.5rem;
 	margin-bottom: 15px;
-	text-align: center;
 }
 
-.game-of-life__panel-controls > i {
+.game-of-life__panel-header > i {
 	padding: 0 5px;
+}
+
+.game-of-life__controls label {
+		display: block;
+    font-size: 1.2rem;
+    padding-bottom: 0.2rem;
 }

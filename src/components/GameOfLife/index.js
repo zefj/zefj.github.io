@@ -118,6 +118,7 @@ console.info('width', width, 'height', height);
           this.state.gameReady &&
             <Controls
               isPaused={this.game.paused}
+              seed={this.game.options.seed}
               onPauseResumeClick={this.handlePauseResumeClick}
             />
         }

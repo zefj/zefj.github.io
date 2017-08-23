@@ -9,7 +9,7 @@ class Controls extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false
+      open: true
     };
     this.controls = null;
     this.openControls = this.openControls.bind(this);
@@ -54,13 +54,32 @@ class Controls extends Component {
           className={`game-of-life__panel ${this.state.open ? 'active' : ''}`}
           // onBlur={this.closeControls}
         >
-          <div className="game-of-life__panel-controls">
-            {
-              this.pauseButton()
-            }
+          <div className="game-of-life__panel-header">
+            Sorry if it crashes your browser :)
           </div>
-          <div className="panel-body">
-            C.S. Lewis
+          <div className="game-of-life__panel-body">
+            <div className="input-group">
+              <label htmlFor="speed">Speed:</label>
+              <div id="inline-submit" className="icon-button">
+                {
+                  this.pauseButton()
+                }
+              </div>
+              <div id="input">
+                <input id="speed" type="range" />
+              </div>
+            </div>
+            <div className="game-of-life__seed-control">
+              <div className="input-group">
+                <label htmlFor="seed">Current generator seed:</label>
+                <div id="inline-submit" className="icon-button">
+                  <i className="fa fa-check"/>
+                </div>
+                <div id="input">
+                  <input id="seed" type="number" defaultValue={this.props.seed}/>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -70,6 +89,7 @@ class Controls extends Component {
 
 Controls.propTypes = {
   isPaused: PropTypes.bool,
+  seed: PropTypes.number,
   onPauseResumeClick: PropTypes.func,
   onStartAgainClick: PropTypes.func,
 }
