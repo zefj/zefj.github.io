@@ -21,6 +21,8 @@ class GameOfLife extends Component {
     }
 
     this.handlePauseResumeClick = this.handlePauseResumeClick.bind(this);
+    this.handleSpeedChanged = this.handleSpeedChanged.bind(this);
+    this.handleSeedChanged = this.handleSeedChanged.bind(this);
     this.registerResizeEventListener = this.registerResizeEventListener.bind(this);
   }
 
@@ -32,11 +34,13 @@ class GameOfLife extends Component {
     let resizeTimer;
     let wasPaused;
 
+    let previousWidth = window.innerWidth;
+    let previousHeight = window.innerHeight;
+
     window.addEventListener("resize", () => {
       // Save the state
       if (wasPaused === undefined) wasPaused = this.game.paused;
 
-      this.game.pause();
       // Debounce game of life reinitialization on window resize
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
@@ -45,16 +49,22 @@ class GameOfLife extends Component {
           gridSize,
         });
 
-        this.game.init({
-          ...this.getWorldDimensions(),
-          gridSize,
-        })
-          .then(() => {
+        // Only reinit on resize upwards
+        // This prevents the mobile soft keyboard to disappear immediately due to canvas updating
+        // We could theoretically fix this by modifying the stateChangedListener to only force
+        // update in certain conditions (focus on div or something), but whatever, this works ok
+        if (previousWidth < window.innerWidth || previousHeight < window.innerHeight) {
+          this.game.pause();
+          this.game.init({
+            ...this.getWorldDimensions(),
+            gridSize,
+          }).then(() => {
             if (!wasPaused) {
               this.game.start();
             }
             wasPaused = undefined;
           });
+        }
       }, 250);
     });
   }
@@ -71,8 +81,7 @@ class GameOfLife extends Component {
     return this.game.init({
       ...this.getWorldDimensions(),
       gridSize,
-    })
-      .then(this.game.registerStateChangedListener(() => { this.forceUpdate() }))
+    }).then(this.game.registerStateChangedListener(() => { this.forceUpdate() }))
       .then(() => { this.setState({ gameReady: true }) })
       .then(this.registerResizeEventListener)
       .then(this.game.start);
@@ -91,7 +100,7 @@ class GameOfLife extends Component {
   getCanvasDimensions() {
     const width = document.body.clientWidth;
     const height = document.body.clientHeight;
-console.info('width', width, 'height', height);
+
     return {
       width,
       height,
@@ -100,7 +109,14 @@ console.info('width', width, 'height', height);
 
   handlePauseResumeClick() {
     this.game.paused ? this.game.start() : this.game.pause();
-    this.forceUpdate();
+  }
+
+  handleSpeedChanged(speed) {
+    this.game.changeSpeed(speed);
+  }
+
+  handleSeedChanged(seed) {
+    this.game.changeSeed(seed);
   }
 
   render() {
@@ -119,7 +135,10 @@ console.info('width', width, 'height', height);
             <Controls
               isPaused={this.game.paused}
               seed={this.game.options.seed}
+              speed={this.game.options.speed}
               onPauseResumeClick={this.handlePauseResumeClick}
+              onSpeedChanged={this.handleSpeedChanged}
+              onSeedChanged={this.handleSeedChanged}
             />
         }
       </span>

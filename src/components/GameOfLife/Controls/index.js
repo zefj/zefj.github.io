@@ -9,11 +9,13 @@ class Controls extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: true
+      open: false
     };
     this.controls = null;
+    this.seedInput = null;
     this.openControls = this.openControls.bind(this);
     this.closeControls = this.closeControls.bind(this);
+    this.onBlur = this.onBlur.bind(this);
   }
 
   componentDidUpdate() {
@@ -30,13 +32,15 @@ class Controls extends Component {
     this.setState({ open: false });
   }
 
-  pauseButton() {
-    return (
-      <i
-        className={`fa fa-${this.props.isPaused ? 'play' : 'pause' }`}
-        onClick={this.props.onPauseResumeClick}
-      />
-    );
+  // https://gist.github.com/pstoica/4323d3e6e37e8a23dd59
+  onBlur(e) {
+    var currentTarget = e.currentTarget;
+
+    setTimeout(() => {
+      if (!currentTarget.contains(document.activeElement)) {
+          this.closeControls();
+      }
+    }, 0);
   }
 
   render() {
@@ -52,7 +56,7 @@ class Controls extends Component {
           tabIndex="0"
           ref={(controls) => { this.controls = controls; }} 
           className={`game-of-life__panel ${this.state.open ? 'active' : ''}`}
-          // onBlur={this.closeControls}
+          onBlur={this.onBlur}
         >
           <div className="game-of-life__panel-header">
             Sorry if it crashes your browser :)
@@ -60,23 +64,46 @@ class Controls extends Component {
           <div className="game-of-life__panel-body">
             <div className="input-group">
               <label htmlFor="speed">Speed:</label>
-              <div id="inline-submit" className="icon-button">
-                {
-                  this.pauseButton()
-                }
+              <div
+                id="inline-submit"
+                className="icon-button"
+                onClick={this.props.onPauseResumeClick}
+              >
+                <i
+                  className={`fa fa-${this.props.isPaused ? 'play' : 'pause' }`}
+                />
               </div>
               <div id="input">
-                <input id="speed" type="range" />
+                <input
+                  id="speed"
+                  type="range"
+                  min="20"
+                  max="500"
+                  step="10"
+                  value={this.props.speed}
+                  onChange={(event) => { this.props.onSpeedChanged(event.target.value) }}
+                />
               </div>
             </div>
             <div className="game-of-life__seed-control">
               <div className="input-group">
                 <label htmlFor="seed">Current generator seed:</label>
-                <div id="inline-submit" className="icon-button">
+                <div
+                  id="inline-submit"
+                  className="icon-button"
+                  onClick={() => { this.props.onSeedChanged(this.seedInput.value) }}
+                >
                   <i className="fa fa-check"/>
                 </div>
                 <div id="input">
-                  <input id="seed" type="number" defaultValue={this.props.seed}/>
+                  <input
+                    ref={(seedInput) => {
+                      this.seedInput = seedInput;
+                    }}
+                    id="seed"
+                    type="number"
+                    defaultValue={this.props.seed}
+                  />
                 </div>
               </div>
             </div>
@@ -90,13 +117,18 @@ class Controls extends Component {
 Controls.propTypes = {
   isPaused: PropTypes.bool,
   seed: PropTypes.number,
+  speed: PropTypes.number,
   onPauseResumeClick: PropTypes.func,
+  onSpeedChanged: PropTypes.func,
+  onSeedChanged: PropTypes.func,
   onStartAgainClick: PropTypes.func,
 }
 
 Controls.defaultProps = {
   isPaused: false,
   onPauseResumeClick: () => {},
+  onSpeedChanged: () => {},
+  onSeedChanged: () => {},
   onStartAgainClick: () => {},
 }
 

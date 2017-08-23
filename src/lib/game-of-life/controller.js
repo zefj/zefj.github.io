@@ -11,11 +11,13 @@ const seeder = (x, y, seed, chance) => {
 const defaultOptions = {
   // seed for pseudorandom number generator
   // for two identical conditions, the same seed will yield the same initial state
-  seed: 666,
+  seed: _.floor(Math.random() * (1000 - 1) + 1),
   // chance for cell to become alive during seeding
   chance: 0.12,
   rows: 200,
   columns: 200,
+  // update every [ms]
+  speed: 20,
 };
 
 class GameOfLifeController {
@@ -56,14 +58,18 @@ class GameOfLifeController {
   __createWorld() {
       const rows = this.options.rows;
       const columns = this.options.columns;
-      this.world = life.createWorld(columns, rows, _.partialRight(seeder, this.options.seed, this.options.chance));
+      this.world = life.createWorld(
+        columns,
+        rows,
+        _.partialRight(seeder, parseInt(this.options.seed) || 1, this.options.chance)
+      );
   }
 
   start() {
     // @TODO: variable animation speed OR variable grid cell
     // Implementation: check handler execution time, and slow it down as necessary
     // OR throttling?
-    this.interval = setInterval(this.__update, 20);
+    this.interval = setInterval(this.__update, this.options.speed);
     this.paused = false;
     this.__notifyStateChanged();
   }
@@ -71,6 +77,23 @@ class GameOfLifeController {
   pause() {
     clearInterval(this.interval);
     this.paused = true;
+    this.__notifyStateChanged();
+  }
+
+  changeSpeed(speed) {
+    const wasPaused = this.paused;
+    this.pause();
+    this.options = Object.assign(this.options, { speed });
+    if (!wasPaused) this.start();
+  }
+
+  changeSeed(seed) {
+    const wasPaused = this.paused;
+    this.pause();
+    this.options = Object.assign(this.options, { seed });
+    this.__createWorld();
+    this.__update();
+    if (!wasPaused) this.start();
   }
 
   __update() {
