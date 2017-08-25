@@ -4,14 +4,14 @@ import GameOfLife from '../GameOfLife';
 
 import './styles.css';
 
-class App extends Component {
+class Index extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="Index">
         <GameOfLife />
       </div>
     );
   }
 }
 
-export default App;
+export default Index;
