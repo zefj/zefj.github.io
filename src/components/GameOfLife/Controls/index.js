@@ -103,6 +103,11 @@ class Controls extends Component {
                     id="seed"
                     type="number"
                     defaultValue={this.props.seed}
+                    onKeyPress={(e) => {
+                      if (e.key === 'Enter') {
+                        this.props.onSeedChanged(this.value);
+                      }
+                    }}
                   />
                 </div>
               </div>
