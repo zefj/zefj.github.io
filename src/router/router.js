@@ -17,7 +17,7 @@ function matchURI(path, uri) {
   return params;
 }
 
-const resolve = (routes, context) => {
+const resolve2 = (routes, context) => {
   return new Promise((resolve, reject) => {
     for (const route of routes) {
       const uri = context.error ? '/error' : context.pathname;
@@ -25,17 +25,35 @@ const resolve = (routes, context) => {
 
       if (!params) continue;
 
-      new Promise(resolve => {
+      return new Promise(resolve => {
         resolve(route.action({ ...context, params }));
       }).then((result) => {
-          if (result) return resolve(result);
-          
-          const error = new Error('Not found');
-          error.status = 404;
-          throw error;
-        })
+          if (result) resolve(result);
+      });
     }
+
+    const error = new Error('Not found');
+    error.status = 404;
+    throw error;
   });
+}
+
+const resolve = (routes, context) => {
+  for (const route of routes) {
+    const uri = context.error ? '/error' : context.pathname;
+    const params = matchURI(route.path, uri);
+
+    if (!params) continue;
+
+    return new Promise(resolve => {
+      const result = route.action({ ...context, params })
+      if (result) resolve(result);
+    })
+  }
+
+  const error = new Error('Not found');
+  error.status = 404;
+  throw error;
 }
 
 // async function resolve(routes, context) {
