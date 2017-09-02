@@ -12,7 +12,7 @@ class Index extends Component {
         
         <div className="content">
           <Well>
-            Hi!
+            { this.props.children }
           </Well>
         </div>
       </div>

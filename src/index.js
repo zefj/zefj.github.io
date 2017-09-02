@@ -17,16 +17,10 @@ function render(location) {
   router.resolve(routes, location)
     .then(renderComponent)
     .catch(error => {
-      debugger;
       router.resolve(routes, { ...location, error })
         .then(renderComponent)
   });
-
-  console.log('Past')
 }
 
 history.listen(render);
-
 render(history.location);
-
-// registerServiceWorker();

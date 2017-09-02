@@ -1,4 +1,5 @@
 import toRegex from 'path-to-regexp';
+import React, { Component } from 'react';
 
 function matchURI(path, uri) {
   const keys = [];
@@ -17,19 +18,22 @@ function matchURI(path, uri) {
   return params;
 }
 
-const resolve2 = (routes, context) => {
-  return new Promise((resolve, reject) => {
+const resolve = (routes, context) => {
+  return new Promise(resolve => {
     for (const route of routes) {
       const uri = context.error ? '/error' : context.pathname;
       const params = matchURI(route.path, uri);
-
+  
       if (!params) continue;
-
-      return new Promise(resolve => {
-        resolve(route.action({ ...context, params }));
-      }).then((result) => {
-          if (result) resolve(result);
-      });
+    
+      var result;
+      if (route.index) {
+        const IndexComponent = route.index;
+        result = <IndexComponent>{ route.action({ ...context, params }) }</IndexComponent>
+      } else {
+        result = route.action({ ...context, params })
+      }
+      if (result) resolve(result);
     }
 
     const error = new Error('Not found');
@@ -37,41 +41,5 @@ const resolve2 = (routes, context) => {
     throw error;
   });
 }
-
-const resolve = (routes, context) => {
-  for (const route of routes) {
-    const uri = context.error ? '/error' : context.pathname;
-    const params = matchURI(route.path, uri);
-
-    if (!params) continue;
-
-    return new Promise(resolve => {
-      const result = route.action({ ...context, params })
-      if (result) resolve(result);
-    })
-  }
-
-  const error = new Error('Not found');
-  error.status = 404;
-  throw error;
-}
-
-// async function resolve(routes, context) {
-//   for (const route of routes) {
-//     const uri = context.error ? '/error' : context.pathname;
-//     const params = matchURI(route.path, uri);
-  
-//     if (!params) continue;
-  
-//     const result = await route.action({ ...context, params });
-  
-//     if (result) return result;
-//   }
-
-//   const error = new Error('Not found');
-//   error.status = 404;
-
-//   throw error;
-// }
 
 export default { resolve };
