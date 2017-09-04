@@ -21,7 +21,8 @@ time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;
+  vertical-align: baseline;
+  box-sizing: border-box;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -53,7 +54,7 @@ html, body {
 }
 
 /* Typography */
-section {
+p {
   margin: 2rem 0;
   line-height: 2rem;
 }
@@ -150,12 +151,7 @@ input::-webkit-inner-spin-button {
   min-height: 1px; 
   width: 33.33%;
   padding: 0 10px;
-  box-sizing: border-box;
 }
-
-/* [class*='col-']:last-child { */
-  /* padding-right: 0; */
-/* } */
 
 .col-1 {
   width: 33.33%; 

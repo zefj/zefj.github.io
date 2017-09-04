@@ -18,4 +18,22 @@ class Card extends Component {
   }
 }
 
+const Header = ({children, className}) => {
+  return (
+    <div className={classNames("card--header", className)}>
+      { children }
+    </div>
+  );
+}
+
+const Body = ({children, className}) => {
+  return (
+    <p className={classNames("card--body", className)}>
+      { children }
+    </p>
+  );
+}
+
+Card.Header = Header;
+Card.Body = Body;
 export default Card;
