@@ -22,3 +22,12 @@
   top: 0px;
   left: 0px;
 }
+
+.social {
+  margin-top: 20px;
+}
+
+.social > a {
+  padding: 10px;
+  color: #9e9f9f;
+}
