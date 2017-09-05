@@ -5,12 +5,12 @@ import './styles.css';
 class Well extends Component {
   render() {
     return (
-      <div className="well-container">
+      <div className="well">
         <div className="well-edge well-edge--top" />
         <div className="well-edge well-edge--bottom" />
         <div className="well-edge well-edge--left" />
         <div className="well-edge well-edge--right" />
-        <div className="well">
+        <div className="well-content">
           { this.props.children }
         </div>
       </div>

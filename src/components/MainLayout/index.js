@@ -11,10 +11,12 @@ class MainLayout extends Component {
         <GameOfLife />
         
         <div className="content">
-          <Well>
-            { this.props.children }
-          </Well>
-          
+          <div className="content--well">
+            <Well>
+              { this.props.children }
+            </Well>
+          </div>
+        
           <div className="social" align="center">
             <a href="https://www.linkedin.com/in/FilipRec"><i className="fa fa-linkedin fa-2x"></i></a>
             <a href="https://github.com/zefj"><i className="fa fa-github fa-2x"></i></a>
