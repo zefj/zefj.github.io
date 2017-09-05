@@ -39,7 +39,7 @@
 .social {
   position: absolute;
   width: 100%;
-  bottom: 20px;
+  bottom: 4rem;
 }
 
 .social > a {
@@ -59,7 +59,7 @@
   }
 
   .social {
-    margin-top: 40px;
+    margin-top: 60px;
     position: relative;
   }
 }
