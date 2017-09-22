@@ -17,10 +17,12 @@ function render(location) {
   router.resolve(routes, location)
     .then(renderComponent)
     .catch(error => {
+      console.error(error.stack);
       router.resolve(routes, { ...location, error })
         .then(renderComponent)
   });
 }
 
 history.listen(render);
+global.hist = history;
 render(history.location);
