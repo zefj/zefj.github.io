@@ -4,20 +4,13 @@
   height: 100%;
 }
 
-.index--introduction {
-  font-size: 1.6rem;
-}
-
 .index--greeting {
   text-transform: uppercase;
   color: #3c3e3f;
   font-size: 2rem;
   padding: 2rem 0;
   border-bottom: solid 2px grey;
-}
-
-.index--content {
-  /* min-height: calc(100vh - 360px); */
+  margin-bottom: 2rem;
 }
 
 .index--cards {
@@ -25,4 +18,5 @@
   bottom: 0;
   left: 0;
   right: 0; */
+  font-size: 1.2rem;
 }

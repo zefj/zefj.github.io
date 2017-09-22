@@ -7,11 +7,12 @@ class Card extends Component {
   render() {
     const {
       children,
-      className
+      className,
+      ...rest
     } = this.props;
 
     return (
-      <div className={classNames("card", className)}>
+      <div className={classNames("card", className)} {...rest}>
         { children }
       </div>
     );
