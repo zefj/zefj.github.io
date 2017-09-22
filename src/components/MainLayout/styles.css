@@ -22,20 +22,6 @@
   left: 0px;
 }
 
-.content--well {
-  position: absolute;
-  margin: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  max-width: 800px;
-  max-height: 420px;
-  height: 100%;
-  width: 100%;
-  border-radius: 3px;
-}
-
 .social {
   position: absolute;
   width: 100%;
@@ -52,12 +38,6 @@
     padding: 4rem 4rem 8rem;
   }
   
-  .content--well {
-    max-height: initial;
-    max-width: initial;
-    position: relative;
-  }
-
   .social {
     margin-top: 60px;
     position: relative;

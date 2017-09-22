@@ -1,3 +1,26 @@
+.well-container {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  max-width: 500px;
+  max-height: 420px;
+  height: 100%;
+  width: 100%;
+  border-radius: 3px;
+}
+
+.well-regular {
+  max-width: 500px;
+}
+
+.well--large {
+  max-width: 800px;
+  max-height: 420px;
+}
+
 .well {
   height: 100%;
   width: 100%;
@@ -44,4 +67,12 @@
   overflow-y: auto;
   overflow-x: hidden;
   padding: 20px;
+}
+
+@media only screen and (max-width: 992px), only screen and (max-height: 600px) {
+  .well-container {
+    max-height: initial;
+    max-width: initial;
+    position: relative;
+  }
 }

@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 
 import View from '../../components/View';
+import withWellControl from '../../components/Well/withWellControl';
 
 class Thesis extends Component {
+  componentWillMount() {
+    this.props.well.setSize('large');
+  }
+
   render() {
     return (
       <View className="thesis">
-
 
 <p>I've graduated from the Westpomeranian University of Technology in Szczecin, Poland. This means I'm now officially an engineer. The automated guitar tuning system was built for my thesis, you can read the <a href="http://frec.pl/bscthesis.txt">abstract here</a>.</p>
 
@@ -33,4 +37,4 @@ class Thesis extends Component {
   }
 }
 
-export default Thesis;
+export default withWellControl(Thesis);
