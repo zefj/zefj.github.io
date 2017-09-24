@@ -20,7 +20,7 @@ class PixelatedContainer extends Component {
       <div className="pixelated">
         {
           _.map(this.props.edges, (edge) => {
-            return <div className={`pixelated-edge pixelated-edge--${edge}`} />
+            return <div key={`edge-${edge}`} className={`pixelated-edge pixelated-edge--${edge}`} />
           })
         }
 
