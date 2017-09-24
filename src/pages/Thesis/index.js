@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import View from '../../components/View';
+import withBackButton from '../../components/BackButton';
 import withWellControl from '../../components/Well/withWellControl';
 
 class Thesis extends Component {
@@ -37,4 +38,4 @@ class Thesis extends Component {
   }
 }
 
-export default withWellControl(Thesis);
+export default withWellControl(withBackButton(Thesis));
