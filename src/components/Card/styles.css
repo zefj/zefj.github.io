@@ -9,8 +9,9 @@
 .card--header {
   border-bottom: solid 1px #9e9f9f;
   padding: 5px 5px 10px;
+  margin-bottom: 1rem;
 }
 
 .card--body {
-  margin: 5px;
+  margin: 0;
 }

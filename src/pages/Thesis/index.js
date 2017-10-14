@@ -11,7 +11,7 @@ class Thesis extends Component {
 
   render() {
     return (
-      <View className="thesis">
+      <View className="post">
 
 <p>I've graduated from the Westpomeranian University of Technology in Szczecin, Poland. This means I'm now officially an engineer. The automated guitar tuning system was built for my thesis, you can read the <a href="http://frec.pl/bscthesis.txt">abstract here</a>.</p>
 

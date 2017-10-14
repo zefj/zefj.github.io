@@ -46,7 +46,7 @@
 	margin-bottom: 5px;
 }
 
-@media (max-width: 768px) { 
+@media only screen and (max-width: 992px) {
 	.game-of-life__toggle {
 		bottom: 1rem;
 		right: 1rem;
@@ -54,14 +54,6 @@
 	.game-of-life__panel {
 		bottom: 1rem;
 		right: 1rem;
-	}
-}
-
-@media (max-width: 576px) { 
-	.game-of-life__panel {
-		width: 100%;
-		bottom: 0;
-		right: 0;
 	}
 }
 

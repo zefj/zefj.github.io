@@ -50,18 +50,15 @@ const generateWorld = (columns, rows) => {
       ).value();
 }
 
-const seedWorld = (world, seeder) => {
+const seedWorld = (world, seeder = 0.2) => {
   return world.map(
     (row, rowIndex) => {
       return _.map(row, (tile, columnIndex) => {
         if (typeof seeder === 'function') {
           return seeder(columnIndex, rowIndex);
-        } else if (typeof seeder === 'number' && seeder >= 0 && seeder <= 1) {
-          return Math.random() < seeder ? 1 : 0;
         }
-
-        console.warn('No seeder function or chance provided, filling randomly with 0.2 chance');
-        return Math.random() < 0.2 ? 1 : 0;
+        
+        return Math.random() < seeder ? 1 : 0;
       })
     }
   )

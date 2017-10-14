@@ -69,6 +69,7 @@ class GameOfLifeController {
     // @TODO: variable animation speed OR variable grid cell
     // Implementation: check handler execution time, and slow it down as necessary
     // OR throttling?
+    // @TODO: REIMPLEMENT USING REQUESTANIMATIONFRAME
     this.interval = setInterval(this.__update, this.options.speed);
     this.paused = false;
     this.__notifyStateChanged();
