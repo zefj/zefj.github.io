@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
 
-import View from '../../components/View';
-import withBackButton from '../../components/BackButton';
-import withWellControl from '../../components/Well/withWellControl';
+import Post from '../../components/Post';
 
 class Thesis extends Component {
-  componentWillMount() {
-    this.props.well.setSize('large');
-  }
-
   render() {
     return (
-      <View className="post">
+      <Post>
+        <Post.Title>
+Automated guitar tuning system
+        </Post.Title>
+        <Post.Body>
 
 <p>I've graduated from the Westpomeranian University of Technology in Szczecin, Poland. This means I'm now officially an engineer. The automated guitar tuning system was built for my thesis, you can read the <a href="http://frec.pl/bscthesis.txt">abstract here</a>.</p>
 
@@ -33,9 +31,10 @@ class Thesis extends Component {
 
 <p>So yeah, I'm an engineer :)</p>
 
-      </View>
+        </Post.Body>
+      </Post>
     );
   }
 }
 
-export default withWellControl(withBackButton(Thesis));
+export default Thesis;

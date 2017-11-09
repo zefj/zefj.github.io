@@ -1,0 +1,89 @@
+.post--title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.post--body {
+    line-height: 2.5rem;
+    margin: 1.5rem 0;
+}
+
+/* Typography */
+p {
+    line-height: 2.5rem;
+    margin: 1.5rem 0;
+}
+ul,
+ol {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+}
+ul li,
+ol li {
+    line-height: 2rem;
+}
+ul ul,
+ol ul,
+ul ol,
+ol ol {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    /* Change heading typefaces here */
+    font-family: sans-serif;
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+    line-height: 2rem;
+}
+h1 {
+    font-size: 4.242rem;
+    line-height: 4.5rem;
+    margin-top: 3rem;
+}
+h2 {
+    font-size: 2.828rem;
+    line-height: 3rem;
+    margin-top: 3rem;
+}
+h3 {
+    font-size: 1.414rem;
+}
+h4 {
+    font-size: 0.707rem;
+}
+h5 {
+    font-size: 0.4713333333333333rem;
+}
+h6 {
+    font-size: 0.3535rem;
+}
+pre {
+    margin: 1rem 0;
+    font-size: 1.2rem;
+}
+a {
+    color: #0e3333;
+}
+a:focus, a:hover, a:active {
+    color: #0e3333;
+}
+code, kbd, pre, samp {
+    font-family: monospace, monospace;
+    font-size: 1em;
+}
+kbd {
+    padding: .2rem .4rem;
+    font-size: 90%;
+    color: #f1f1f1;
+    background-color: #212529;
+    border-radius: .2rem;
+}

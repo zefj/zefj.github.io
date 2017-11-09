@@ -1,5 +1,5 @@
 import toRegex from 'path-to-regexp';
-import React, { Component } from 'react';
+import React from 'react';
 
 function matchURI(path, uri) {
   const keys = [];
