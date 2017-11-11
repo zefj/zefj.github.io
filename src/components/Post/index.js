@@ -1,8 +1,21 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import hljs from 'highlight.js';
 
+import 'highlight.js/styles/zenburn.css';
 import './styles.css';
 
 class Post extends Component {
+  componentDidMount() {
+    const domNode = ReactDOM.findDOMNode(this);
+    const nodes = domNode.querySelectorAll('pre code');
+
+    let i;
+    for (i = 0; i < nodes.length; i++) {
+        hljs.highlightBlock(nodes[i]); 
+    }
+  }
+  
   render() {
     return (
       <div className="post">

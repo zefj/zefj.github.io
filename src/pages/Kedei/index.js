@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 
 import Post from '../../components/Post';
 
-import Highlight from 'react-highlight';
-import 'highlight.js/styles/zenburn.css';
-
 class Thesis extends Component {
   render() {
     return (
@@ -42,18 +39,18 @@ class Thesis extends Component {
           
           <ol>
             <li>Clone repos
-              <Highlight className='php'>
+              <pre><code className='php'>
           {`cd /home/user/
           git clone https://github.com/raspberrypi/tools
           export CCPREFIX=/home/user/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian/bin/arm-linux-gnueabihf-
           git clone --depth=1 https://github.com/raspberrypi/linux
           git clone https://github.com/zefj/kedei2-patchfiles`}
-              </Highlight>
+              </code></pre>
               <p>Make sure your variable works fine by running {'${CCPREFIX}'}gcc -v, if the returned wall of text is different than gcc -v, and there don't seem to be any errors, you're fine.</p>
             </li>
             
             <li>Patch source files
-              <Highlight className='php'>
+              <pre><code className='php'>
           {`cd linux/
           cat /home/user/kedei2-patchfiles/kedei-diff.patch | patch -p1
           cp /home/user/kedei2-patchfiles/drivers/video/fbdev/ili9341.c drivers/video/fbdev/ili9341.c
@@ -67,22 +64,22 @@ class Thesis extends Component {
           
           Use the patch from http://heikki.virekunnas.fi/wp-content/uploads/sites/2/2015/08/ili9341_patch.diff, and the ili9341.c driver and .config from my repo.
           `}
-              </Highlight>
+              </code></pre>
               <p>Make sure every file is patched! Changes to bcm2708.c, bcm2709.c, Kconfig and Makefile in directories as in my repo. You also need ili9341.c present.</p>
             </li>
           
             <li>Create config file
-              <Highlight className='php'>
+              <pre><code className='php'>
           {`cd linux/
           make ARCH=arm CROSS_COMPILE=\${CCPREFIX} oldconfig`}
-              </Highlight>
+              </code></pre>
               <p>This will take the config file and run it against the kernel to check for any missing options. You need to edit it manually after it returns to make sure CONFIG_FB_ILI9341 is set to 'm'. Just search for it, remember to delete the leading hash if there is one.</p>
             </li>
             
             <li>Compile!
-              <Highlight className='php'>
+              <pre><code className='php'>
           {`​make ARCH=arm CROSS_COMPILE=\${CCPREFIX} zImage modules dtbs`}
-              </Highlight>
+              </code></pre>
             </li>
           
             <li>
