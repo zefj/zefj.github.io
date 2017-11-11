@@ -7,9 +7,7 @@ pipeline {
             image 'node:8-alpine'
         }
     }
-    environment {
-      CI = 'true'
-    }
+
     stages {
         stage('Install') {
             steps {
