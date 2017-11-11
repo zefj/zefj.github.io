@@ -43,7 +43,7 @@
   width: 100%;
 }
 
-.social > a {
+.social > a, .social > a:hover, .social > a:active, .social > a:focus {
   color: rgba(158, 159, 159, 0.5);
   padding: 10px;
 }
