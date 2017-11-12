@@ -23,7 +23,7 @@ class Post extends Component {
 
   loadDisqus() {
     window.disqus_config = function () {
-      this.page.url = `https://frec.pl/${window.location.pathname}`;
+      this.page.url = `https://frec.pl${window.location.pathname}`;
       this.page.identifier = window.location.pathname;
       this.page.title = document.title;
     };
