@@ -4,7 +4,7 @@
 import _ from 'lodash';
 
 const isAlive = (cell, numAliveNeighbours) => {
-  return (cell === 1 && _.inRange(numAliveNeighbours, 2, 4)) 
+  return (cell === 1 && _.inRange(numAliveNeighbours, 2, 4))
     || (cell === 0 && numAliveNeighbours === 3) ? 1 : 0;
 };
 
@@ -40,7 +40,7 @@ const updateWorld = (world) => {
     }
 
     return mirrorGrid;
-}
+};
 
 const generateWorld = (columns, rows) => {
   return _.chain(_.range(1, rows + 1))
@@ -48,7 +48,7 @@ const generateWorld = (columns, rows) => {
       .map(
         (row, rowIndex) => row.concat(_.range(1, columns + 1).map((tile, columnIndex) => 0))
       ).value();
-}
+};
 
 const seedWorld = (world, seeder = 0.2) => {
   return world.map(
@@ -57,20 +57,20 @@ const seedWorld = (world, seeder = 0.2) => {
         if (typeof seeder === 'function') {
           return seeder(columnIndex, rowIndex);
         }
-        
+
         return Math.random() < seeder ? 1 : 0;
       })
     }
   )
-}
+};
 
 export const createWorld = (columns, rows, seeder = null) => {
   return seedWorld(generateWorld(columns, rows), seeder);
-}
+};
 
 export const getNextGeneration = (world) => {
     // console.time('getNextGeneration execution time');
   const nextGeneration = updateWorld(world);
     // console.timeEnd('getNextGeneration execution time');
   return nextGeneration;
-}
+};

@@ -6,7 +6,7 @@ const seeder = (x, y, seed, chance) => {
   const seedForTile = seed * (x + 1) * (y + 1);
   var r = Math.sin(seedForTile) * 10000;
   return (r - Math.floor(r)) < chance ? 1 : 0;
-}
+};
 
 const defaultOptions = {
   // seed for pseudorandom number generator
@@ -32,14 +32,13 @@ class GameOfLifeController {
     this.stateChangedListener = () => {};
 
     this.options = null;
-
     this.paused = false;
   }
 
   __notifyStateChanged() {
     this.stateChangedListener();
   }
-  
+
   init(options) {
     return new Promise((resolve, reject) => {
       this.options = Object.assign(defaultOptions, options);

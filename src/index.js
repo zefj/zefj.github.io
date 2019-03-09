@@ -1,6 +1,5 @@
 import ReactDOM from 'react-dom';
 import './index.css';
-// import registerServiceWorker from './registerServiceWorker';
 
 import history from './router/history';
 import router from './router/router';
@@ -17,11 +16,9 @@ function render(location) {
     .then(renderComponent)
     .catch(error => {
       console.error(error.stack);
-      router.resolve(routes, { ...location, error })
-        .then(renderComponent)
+      history.push('/');
   });
 }
 
 history.listen(render);
-global.hist = history;
 render(history.location);

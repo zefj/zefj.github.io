@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import hljs from 'highlight.js';
 
+// yay tree shaking
+import hljs from 'highlight.js/lib/highlight';
+import bash from 'highlight.js/lib/languages/bash';
 import 'highlight.js/styles/zenburn.css';
+
 import './styles.css';
 
 class Post extends Component {
@@ -10,14 +13,19 @@ class Post extends Component {
     this.highlightCode();
     this.loadDisqus();
   }
-  
+
+  /**
+   * This could be offloaded to children but since this app is very basic there is little point
+   */
   highlightCode() {
     const domNode = ReactDOM.findDOMNode(this);
     const nodes = domNode.querySelectorAll('pre code');
 
+    hljs.registerLanguage('bash', bash);
+
     let i;
     for (i = 0; i < nodes.length; i++) {
-        hljs.highlightBlock(nodes[i]); 
+        hljs.highlightBlock(nodes[i]);
     }
   }
 

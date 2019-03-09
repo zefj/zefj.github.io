@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 import withRouter from '../../router/withRouter';
 import PixelatedContainer from '../PixelatedContainer';

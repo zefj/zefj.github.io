@@ -8,16 +8,8 @@ import Kedei from '../pages/Kedei';
 const routes = [
   { path: '/', action: () => <Index />, index: MainLayout },
   { path: '/thesis', action: () => <Thesis />, index: SimpleLayout },
-  { path: '/blog/compiling-custom-raspberry-pi-kernel-with-kedei-35/', action: () => <Kedei />, index: SimpleLayout }, // This post is pretty important for the community
-  { path: '/error', action: () => <p>Not found</p>}
-  // async example
-  // { path: '/error', action: () => {
-  //   return new Promise(resolve => {
-  //     setTimeout(() => {
-  //       resolve(<p>test</p>);
-  //     }, 2000);
-  //   });
-  // }}
+  // This post is somewhat important for the community
+  { path: '/blog/compiling-custom-raspberry-pi-kernel-with-kedei-35/', action: () => <Kedei />, index: SimpleLayout },
 ];
 
 export default routes;

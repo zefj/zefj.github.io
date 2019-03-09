@@ -47,14 +47,14 @@ class Controls extends Component {
     return (
       <div className="game-of-life__controls">
         <div
-          className="game-of-life__toggle" 
+          className="game-of-life__toggle"
           onClick={this.openControls}
         >
           <BoatIcon />
         </div>
         <div
           tabIndex="0"
-          ref={(controls) => { this.controls = controls; }} 
+          ref={(controls) => { this.controls = controls; }}
           className={`game-of-life__panel ${this.state.open ? 'active' : ''}`}
           onBlur={this.onBlur}
         >
@@ -81,7 +81,7 @@ class Controls extends Component {
                   max="500"
                   step="10"
                   value={this.props.speed}
-                  onChange={(event) => { this.props.onSpeedChanged(event.target.value) }}
+                  onChange={(event) => { event.target.value && this.props.onSpeedChanged(parseInt(event.target.value)) }}
                 />
               </div>
             </div>
@@ -91,7 +91,7 @@ class Controls extends Component {
                 <div
                   id="inline-submit"
                   className="icon-button"
-                  onClick={() => { this.props.onSeedChanged(this.seedInput.value) }}
+                  onClick={() => { this.seedInput.value && this.props.onSeedChanged(parseInt(this.seedInput.value)) }}
                 >
                   <i className="fa fa-check"/>
                 </div>
@@ -105,7 +105,7 @@ class Controls extends Component {
                     defaultValue={this.props.seed}
                     onKeyPress={(e) => {
                       if (e.key === 'Enter') {
-                        this.props.onSeedChanged(this.value);
+                          this.value && this.props.onSeedChanged(parseInt(this.value));
                       }
                     }}
                   />
@@ -127,7 +127,7 @@ Controls.propTypes = {
   onSpeedChanged: PropTypes.func,
   onSeedChanged: PropTypes.func,
   onStartAgainClick: PropTypes.func,
-}
+};
 
 Controls.defaultProps = {
   isPaused: false,
@@ -135,6 +135,6 @@ Controls.defaultProps = {
   onSpeedChanged: () => {},
   onSeedChanged: () => {},
   onStartAgainClick: () => {},
-}
+};
 
 export default Controls;

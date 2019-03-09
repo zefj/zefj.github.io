@@ -18,7 +18,7 @@ class GameOfLife extends Component {
 
     this.state = {
       gameReady: false,
-    }
+    };
 
     this.handlePauseResumeClick = this.handlePauseResumeClick.bind(this);
     this.handleSpeedChanged = this.handleSpeedChanged.bind(this);
@@ -81,7 +81,11 @@ class GameOfLife extends Component {
     return this.game.init({
       ...this.getWorldDimensions(),
       gridSize,
-    }).then(this.game.registerStateChangedListener(() => { this.forceUpdate() }))
+    })
+    // game settings are held in an object inside controller, hence why we must forceUpdate each time they change - so
+    // that React can update the controls component. If we moved them to local state, we could get rid of it, but that
+    // works well and encapsulates everything nicely, also SRP.
+      .then(this.game.registerStateChangedListener(this.forceUpdate.bind(this)))
       .then(() => { this.setState({ gameReady: true }) })
       .then(this.registerResizeEventListener)
       .then(this.game.start);
