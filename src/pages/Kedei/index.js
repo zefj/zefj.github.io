@@ -23,11 +23,11 @@ class Thesis extends Component {
           </ul>
 
           <p>This is what happens if you follow Heikki's TL;DR or compile the kernel with V1 drivers on a V2 screen (hint: the colours are inverted):</p>
-          <p><img alt="" src="/media/uploads/2015/12/25/rpiinve.jpg" /></p>
+          <p><img alt="" src="/media/uploads/2015/12/25/rpiinve.jpg" /></p> {/* TODO find and bundle those assets */}
           <p>So, after 7 or 8 tries, it finally worked. By trial and error I was able to figure out the appropriate combination. I've used Heikki's diff file, and the ili9341.c file from the &quot;official&quot; patch. I ran the .config through make oldconfig, manually made sure the ili9341 driver is turned on, and then compiled according to the guide. Cross compiling is the way to go, I used VirtualBox with Ubuntu 14.04 on it, and used raspberrypi/linux repo <a href="https://github.com/raspberrypi/linux/commit/853eff4e9b369cdc20be7c538bc5a5291eeab31d">commit</a>. You can surely figure out any missing dependencies.</p>
           <p>After compiling and flashing it to your sd card, make sure to add <i>ili9341</i> and <i>fb_ili9341</i> to your <i>/etc/modules</i>. Doing that, <kbd>ls /dev/</kbd> should report <i>/dev/fb0</i> (which would be your HDMI framebuffer), and <i>/dev/fb1</i> (the LCD). If that is the case, you can use the <kbd>con2fbmap 1 1</kbd> and <kbd>con2fbmap 1 0</kbd> commands in headless mode to change between them. If you want to boot X to your LCD, go to <i>/usr/share/X11/xorg.conf/99-fbturbo.conf</i> and change <i>fb0</i> to <i>fb1</i>.</p>
           <p>And that should do it. You can now enjoy the latest kernel with support for your new cheap touchscreen.</p>
-          <p><img alt="" src="/media/uploads/2015/12/25/rpinorm.jpg" /></p>
+          <p><img alt="" src="/media/uploads/2015/12/25/rpinorm.jpg" /></p> {/* TODO find and bundle those assets */}
 
           <hr />
 
