@@ -31,6 +31,7 @@ const resolve = (routes, context) => {
       if (!params) continue;
 
       var result;
+      // TODO: bail on match?
       if (route.index) {
         const IndexComponent = route.index;
         result = <IndexComponent>{ route.action({ ...context, params }) }</IndexComponent>

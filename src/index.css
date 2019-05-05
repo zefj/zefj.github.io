@@ -1,4 +1,4 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
+/* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -12,8 +12,8 @@ center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -25,7 +25,7 @@ time, mark, audio, video {
   box-sizing: border-box;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
@@ -94,7 +94,7 @@ label {
 }
 
 .input-group #input {
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 .input-group #inline-submit {
@@ -133,7 +133,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* Grid system */
-.row:before, 
+.row:before,
 .row:after {
   content:"";
   display: table;
@@ -142,19 +142,19 @@ input::-webkit-inner-spin-button {
 
 [class*='col-'] {
   float: left;
-  min-height: 1px; 
+  min-height: 1px;
   width: 33.33%;
   padding: 0 10px;
 }
 
 .col-1 {
-  width: 33.33%; 
+  width: 33.33%;
 }
 
 .col-2 {
-  width: 50%; 
+  width: 50%;
 }
 
 .col-3 {
-  width: 100%; 
+  width: 100%;
 }

@@ -19,7 +19,7 @@
 }
 
 .game-of-life__panel {
-	z-index: 2;	
+	z-index: 2;
 	box-shadow: 0 0 5px rgba(0,0,0,0.15);
 	position: fixed;
 	bottom: 3rem;
@@ -35,7 +35,7 @@
 
   background-color: white;
   border-radius: 4px;
-  padding: 1rem;
+  padding: 2rem;
 }
 
 .game-of-life__panel > * {
@@ -58,7 +58,7 @@
 }
 
 .game-of-life__panel:focus {
-  outline: initial; 
+  outline: initial;
 }
 
 .game-of-life__panel.active {
@@ -69,17 +69,12 @@
 	transition: transform 0.2s, visibility 0s 0s, opacity 0.2s;
 }
 
-.game-of-life__panel-header {
-	font-size: 1.5rem;
-	margin-bottom: 15px;
-}
-
-.game-of-life__panel-header > i {
-	padding: 0 5px;
-}
-
 .game-of-life__controls label {
-		display: block;
+	display: block;
     font-size: 1.2rem;
     padding-bottom: 0.2rem;
+}
+
+.game-of-life__controls .apology {
+	font-size: 1.2rem;
 }
