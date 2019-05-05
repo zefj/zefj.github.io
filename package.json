@@ -2,7 +2,7 @@
   "name": "frec-pl-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://zefj.github.io/frec-pl-react",
+  "homepage": "https://zefj.github.io",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "highlight.js": "^9.15.6",
