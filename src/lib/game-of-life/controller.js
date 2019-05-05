@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-import * as life from './index'
+import { createWorld, getNextGeneration } from './world'; // TODO: rename this file
 
 const seeder = (x, y, seed, chance) => {
   const seedForTile = seed * (x + 1) * (y + 1);
@@ -16,7 +16,7 @@ const defaultOptions = {
   chance: 0.12,
   rows: 200,
   columns: 200,
-  // update every [ms]
+  // attempt to update every [ms]
   speed: 20,
 };
 
@@ -35,6 +35,7 @@ class GameOfLifeController {
     this.paused = false;
   }
 
+  // TODO: implement a proper event system
   __notifyStateChanged() {
     this.stateChangedListener();
   }
@@ -48,7 +49,7 @@ class GameOfLifeController {
     });
   }
 
-  // This will get called after internal game state changes,
+  // This listener will get called after internal game state changes,
   // eg. game gets paused
   registerStateChangedListener(listener) {
     this.stateChangedListener = listener;
@@ -57,7 +58,7 @@ class GameOfLifeController {
   __createWorld() {
       const rows = this.options.rows;
       const columns = this.options.columns;
-      this.world = life.createWorld(
+      this.world = createWorld(
         columns,
         rows,
         _.partialRight(seeder, parseInt(this.options.seed) || 1, this.options.chance)
@@ -65,42 +66,52 @@ class GameOfLifeController {
   }
 
   start() {
-    // @TODO: variable animation speed OR variable grid cell
-    // Implementation: check handler execution time, and slow it down as necessary
-    // OR throttling?
-    // @TODO: REIMPLEMENT USING REQUESTANIMATIONFRAME
-    this.interval = setInterval(this.__update, this.options.speed);
+    // @TODO: variable grid cell?
+    // @TODO: measure time and slow execution down as necessary on slower PCs?
     this.paused = false;
+    this.interval = window.requestAnimationFrame(this.__update);
     this.__notifyStateChanged();
   }
 
   pause() {
-    clearInterval(this.interval);
     this.paused = true;
+    window.cancelAnimationFrame(this.interval);
     this.__notifyStateChanged();
   }
 
   changeSpeed(speed) {
-    const wasPaused = this.paused;
-    this.pause();
     this.options = Object.assign(this.options, { speed });
-    if (!wasPaused) this.start();
+    this.__notifyStateChanged();
   }
 
   changeSeed(seed) {
-    const wasPaused = this.paused;
-    this.pause();
     this.options = Object.assign(this.options, { seed });
     this.__createWorld();
-    this.__update();
-    if (!wasPaused) this.start();
+    this.__notifyStateChanged();
   }
 
+  then = 0;
+
   __update() {
-    // console.time('updateCanvas execution time');
-    this.world = life.getNextGeneration(this.world);
-    this.drawer.draw(this.world);
-    // console.timeEnd('updateCanvas execution time');
+    if (this.paused) {
+      return;
+    }
+
+    this.interval = window.requestAnimationFrame(this.__update);
+
+    // calc elapsed time since last loop
+    const now = performance.now();
+    const elapsed = now - this.then;
+
+    // if enough time has elapsed, calculate and draw the next frame
+    if (elapsed > this.options.speed) {
+        // Get ready for next frame by setting then=now, but also adjust for specified speed not being a multiple of
+        // RAF's interval (16.7ms)
+        this.then = now - (elapsed % this.options.speed);
+
+        this.world = getNextGeneration(this.world);
+        this.drawer.draw(this.world);
+    }
   }
 }
 

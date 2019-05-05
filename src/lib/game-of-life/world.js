@@ -13,12 +13,12 @@ const updateWorld = (world) => {
     // Building the mirrorGrid with clean state like below is faster than JSON.parse(JSON.stringify(world)),
     // as well as _.deepClone(cleanWorld) and couple other solutions. I wasn't able to find a solution that performs
     // better than this.
-    const mirrorGrid = [];
-    for (var j = 0; j < world.length; j++) { //iterate through rows
-      mirrorGrid[j] = [];
-      for (var k = 0; k < world[j].length; k++) { //iterate through columns
-        mirrorGrid[j][k] = 0;
+    const nextWorld = [];
 
+    for (var j = 0; j < world.length; j++) { //iterate through rows
+      nextWorld[j] = [];
+
+      for (var k = 0; k < world[j].length; k++) { //iterate through columns
         var totalCells = 0;
         if (world[j - 1]) {
           totalCells += world[j - 1][k - 1]; //top left
@@ -35,11 +35,11 @@ const updateWorld = (world) => {
           totalCells += world[j + 1][k + 1]; //bottom right
         }
 
-        mirrorGrid[j][k] = isAlive(world[j][k], totalCells);
+        nextWorld[j][k] = isAlive(world[j][k], totalCells);
       }
     }
 
-    return mirrorGrid;
+    return nextWorld;
 };
 
 const generateWorld = (columns, rows) => {

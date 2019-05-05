@@ -30,6 +30,7 @@ class GameOfLife extends Component {
     this.initializeGame()
   }
 
+  // TODO: rewrite this and initializeGame so that it's DRY and clearer
   registerResizeEventListener() {
     let resizeTimer;
     let wasPaused;
@@ -52,7 +53,9 @@ class GameOfLife extends Component {
         // Only reinit on resize upwards
         // This prevents the mobile soft keyboard to disappear immediately due to canvas updating
         // We could theoretically fix this by modifying the stateChangedListener to only force
-        // update in certain conditions (focus on div or something), but whatever, this works ok
+        // update in certain conditions (focus on div or something), but whatever, this works ok.
+        // There is a side-effect to this: if you zoom out and then zoom in, you will be running
+        // more calculations than you actually need to - TODO: fix it.
         if (previousWidth < window.innerWidth || previousHeight < window.innerHeight) {
           this.game.pause();
           this.game.init({
@@ -81,10 +84,11 @@ class GameOfLife extends Component {
     return this.game.init({
       ...this.getWorldDimensions(),
       gridSize,
+      drawOnInit: true,
     })
     // game settings are held in an object inside controller, hence why we must forceUpdate each time they change - so
     // that React can update the controls component. If we moved them to local state, we could get rid of it, but that
-    // works well and encapsulates everything nicely, also SRP.
+    // works well and encapsulates everything nicely, also SRP. Note: I hate it.
       .then(this.game.registerStateChangedListener(this.forceUpdate.bind(this)))
       .then(() => { this.setState({ gameReady: true }) })
       .then(this.registerResizeEventListener)

@@ -81,9 +81,9 @@ class Controls extends Component {
                 <input
                   id="speed"
                   type="range"
-                  min="20"
-                  max="500"
-                  step="10"
+                  min="1" // just max speed, this is essentially as fast as your computer can handle
+                  max="100"
+                  step="5"
                   value={this.props.speed}
                   onChange={(event) => { event.target.value && this.props.onSpeedChanged(parseInt(event.target.value)) }}
                 />
@@ -107,7 +107,7 @@ class Controls extends Component {
           </div>
 
           <span className="apology">
-              Did it crash your browser? Let me know on <a href="https://github.com/zefj/zefj.github.io/issues">GitHub</a>
+              Does it crash your browser? Let me know on <a href="https://github.com/zefj/zefj.github.io/issues">GitHub</a>
           </span>
         </div>
       </div>
