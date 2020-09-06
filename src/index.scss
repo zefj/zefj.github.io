@@ -1,3 +1,8 @@
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -50,7 +55,8 @@ table {
 
 html, body {
   height: 100%;
-  font-size: 10px;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 
@@ -60,20 +66,102 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  font-size: 1.6rem;
+}
+
+/* Typography */
+p {
+  line-height: 2.5rem;
+  margin: 1.5rem 0;
+}
+
+ul,
+ol {
+//  margin-top: 1.5rem;
+//  margin-bottom: 1.5rem;
+  padding-left: 1rem;
+}
+
+//ul li,
+//ol li {
+//  line-height: 2rem;
+//}
+
+ul ul,
+ol ul,
+ul ol,
+ol ol {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: .5rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: 3.5rem
+}
+
+h2 {
+  font-size: 1.25rem
+}
+
+h3 {
+  font-size: 1.0625rem
+}
+
+h4 {
+  font-size: .9375rem
+}
+
+h5 {
+  font-size: .8125rem
+}
+
+h6 {
+  font-size: .625rem
+}
+
+
+pre {
+  margin: 1rem 0;
+  font-size: 1.2rem;
+}
+
+a {
+  color: #0e3333;
+}
+
+a:focus, a:hover, a:active {
+  color: #0e3333;
+}
+
+code, kbd, pre, samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+kbd {
+  padding: .2rem .4rem;
+  font-size: 90%;
+  color: #f1f1f1;
+  background-color: #212529;
+  border-radius: .2rem;
 }
 
 /* Whatevs, just some styling */
 input {
   width: 100%;
-  font-size: 1.6rem;
+  font-size: 1rem;
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid #9e9e9e;
+  border-bottom: 1px solid #cecece;
   border-radius: 0;
   outline: none;
   height: 2rem;
-  padding: 0 0 0 0.5rem;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -81,44 +169,19 @@ input[type="range"] {
   padding: 0 0.5rem;
   margin: 0;
   border: 0;
-  direction: rtl;
 }
 
 label {
   margin-bottom: 2px;
+  font-size: 0.875rem;
 }
 
 .input-group {
-  overflow: hidden;
   margin-bottom: 20px;
-}
-
-.input-group #input {
-  overflow: hidden;
-}
-
-.input-group #inline-submit {
-  float: right;
-  margin-left: 1.5rem;
 }
 
 .icon-button:hover {
   background-color: #d2d2d2;
-}
-
-.icon-button {
-  display: table; /* https://stackoverflow.com/a/16629593/4389332 */
-  border-radius: 2px;
-  text-align: center;
-  padding: 0 0.5rem 0;
-  height: 20px;
-  width: 20px;
-  cursor: pointer;
-}
-
-.icon-button i {
-  display: table-cell;
-  vertical-align: middle;
 }
 
 input::-webkit-outer-spin-button,

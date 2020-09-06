@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import BoatIcon from './BoatIcon';
 
-import './styles.css';
+import './styles.scss';
 
-// TODO rewrite this with hooks
+// TODO rewrite this with hooks PLEASE I CANNOT LOOK AT THIS
 class Controls extends Component {
   constructor(props) {
     super(props);
@@ -45,6 +45,10 @@ class Controls extends Component {
       return;
     }
 
+    if (!this.controls) {
+      return;
+    }
+
     if (this.controls.contains(event.target)) {
       return;
     }
@@ -68,46 +72,38 @@ class Controls extends Component {
           <div className="game-of-life__panel-body">
             <div className="input-group">
               <label htmlFor="speed">Speed:</label>
-              <div
-                id="inline-submit"
-                className="icon-button"
-                onClick={this.props.onPauseResumeClick}
-              >
-                <i
-                  className={`fa fa-${this.props.isPaused ? 'play' : 'pause' }`}
-                />
-              </div>
-              <div id="input">
+              <div className="game-of-life__speed-control">
                 <input
                   id="speed"
                   type="range"
                   min="1" // just max speed, this is essentially as fast as your computer can handle
                   max="100"
                   step="5"
-                  value={this.props.speed}
-                  onChange={(event) => { event.target.value && this.props.onSpeedChanged(parseInt(event.target.value)) }}
+                  value={100 - this.props.speed}
+                  onChange={(event) => { event.target.value && this.props.onSpeedChanged(100 - parseInt(event.target.value)) }}
                 />
+                <button onClick={this.props.onPauseResumeClick}>
+                  <i className={`fa fa-${this.props.isPaused ? 'play' : 'pause' }`} />
+                </button>
               </div>
             </div>
             <div className="game-of-life__seed-control">
               <div className="input-group">
                 <label htmlFor="seed">Initial state generator seed:</label>
-                <div id="input">
-                  <input
-                    ref={(seedInput) => this.seedInput = seedInput }
-                    id="seed"
-                    type="number"
-                    defaultValue={this.props.seed}
-                    // TOOD: debounce this
-                    onChange={() => this.props.onSeedChanged(parseInt(this.seedInput.value) || 0)}
-                  />
-                </div>
+                <input
+                  ref={(seedInput) => this.seedInput = seedInput }
+                  id="seed"
+                  type="number"
+                  defaultValue={this.props.seed}
+                  // TOOD: debounce this
+                  onChange={() => this.props.onSeedChanged(parseInt(this.seedInput.value) || 0)}
+                />
               </div>
             </div>
           </div>
 
-          <span className="apology">
-              Does it crash your browser? Let me know on <a href="https://github.com/zefj/zefj.github.io/issues">GitHub</a>
+          <span className="game-of-life__apology">
+              Does it crash your browser? Let me know on <a href="https://github.com/zefj/zefj.github.io/issues">GitHub</a>.
           </span>
         </div>
       </div>

@@ -1,7 +1,5 @@
 .game-of-life__controls {
-	/*position: fixed;*/
-	/*bottom: 3rem;*/
-	/*right: 3rem;*/
+	color: rgb(62, 62, 62);
 }
 
 .game-of-life__toggle {
@@ -33,9 +31,9 @@
 	transition: transform 0.2s, visibility 0s 0.2s, opacity 0.2s;
 	opacity: 0;
 
-  background-color: white;
-  border-radius: 4px;
-  padding: 2rem;
+	background-color: white;
+	border-radius: 4px;
+	padding: 1.5rem 1rem;
 }
 
 .game-of-life__panel > * {
@@ -71,10 +69,36 @@
 
 .game-of-life__controls label {
 	display: block;
-    font-size: 1.2rem;
     padding-bottom: 0.2rem;
 }
 
-.game-of-life__controls .apology {
-	font-size: 1.2rem;
+.game-of-life__speed-control {
+	display: flex;
+	align-items: center;
+}
+
+// TODO: refactor the styles in this app and move this to a shared location
+%reset-button {
+	border: none;
+	margin: 0;
+	padding: 0;
+	width: auto;
+	overflow: visible;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	line-height: normal;
+	-webkit-font-smoothing: inherit;
+	-moz-osx-font-smoothing: inherit;
+	-webkit-appearance: none;
+}
+
+.game-of-life__speed-control button {
+	@extend %reset-button;
+	margin-left: 1rem;
+	color: black;
+}
+
+.game-of-life__apology {
+	font-size: 0.7rem;
 }

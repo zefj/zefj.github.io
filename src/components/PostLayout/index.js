@@ -4,7 +4,7 @@ import Header from './Header';
 
 import './styles.css';
 
-class SimpleLayout extends Component {
+class PostLayout extends Component {
   render() {
     return (
       <div className="simple--container">
@@ -17,4 +17,4 @@ class SimpleLayout extends Component {
   }
 }
 
-export default SimpleLayout;
+export default PostLayout;

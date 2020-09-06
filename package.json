@@ -4,12 +4,14 @@
   "private": true,
   "homepage": "https://frec.pl",
   "dependencies": {
-    "gh-pages": "^2.0.1",
+    "@fortawesome/fontawesome-free": "^5.14.0",
+    "gh-pages": "^3.0.0",
     "highlight.js": "^9.15.6",
     "history": "^4.7.2",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4",
-    "react-scripts": "2.1.8"
+    "node-sass": "^4.14.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-scripts": "^3.4.0"
   },
   "scripts": {
     "predeploy": "yarn run build",

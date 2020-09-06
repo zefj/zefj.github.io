@@ -1,15 +1,16 @@
 import React from 'react';
-import MainLayout from '../components/MainLayout';
-import SimpleLayout from '../components/SimpleLayout';
-import Index from '../pages/Index';
+import IndexLayout from '../components/IndexLayout';
+import PostLayout from '../components/PostLayout';
 import Thesis from '../pages/Thesis';
 import Kedei from '../pages/Kedei';
+import { Resume } from '../pages/Resume/Resume';
 
 const routes = [
-  { path: '/', action: () => <Index />, index: MainLayout },
-  { path: '/thesis', action: () => <Thesis />, index: SimpleLayout },
+  { path: '/', action: () => <IndexLayout /> },
+  { path: '/thesis', action: () => <Thesis />, index: PostLayout },
+  { path: '/resume', action: () => <Resume /> },
   // This post is somewhat important for the community
-  { path: '/blog/compiling-custom-raspberry-pi-kernel-with-kedei-35/', action: () => <Kedei />, index: SimpleLayout },
+  { path: '/blog/compiling-custom-raspberry-pi-kernel-with-kedei-35/', action: () => <Kedei />, index: PostLayout },
 ];
 
 export default routes;

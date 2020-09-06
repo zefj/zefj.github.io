@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.scss';
 
 import router from './router/router';
 import routes from './router/routes';
