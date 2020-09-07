@@ -36,8 +36,8 @@ export const Resume = () => {
 
           <div className="resume__sidebar">
             <div className="resume__about resume__block">
-              A curious developer with hands-on experience with the full stack and life cycle of projects in the
-              health care and online booking industry.
+              A developer with hands-on experience with the full stack and life cycle of projects in the health care and
+              online booking industry.
             </div>
 
             <div className="resume__skills resume__block">
@@ -55,7 +55,7 @@ export const Resume = () => {
               </div>
 
               <div className="resume__secondary-skills resume__entry">
-                <div className="resume__skills-description">Familiar with:</div>
+                <div className="resume__skills-description">Built things with:</div>
                 <div className="resume__skills-container">
                   <div className="resume__skill">Node.js</div>
                   <div className="resume__skill">Java</div>
@@ -70,10 +70,10 @@ export const Resume = () => {
                 <div className="resume__skills-description">Played with:</div>
                 <div className="resume__skills-container">
                   <div className="resume__skill">TypeScript</div>
-                  <div className="resume__skill">C++</div>
+                  {/*<div className="resume__skill">C++</div>*/}
                   <div className="resume__skill">AWS</div>
                   <div className="resume__skill">RabbitMQ</div>
-                  <div className="resume__skill">MongoDB</div>
+                  {/*<div className="resume__skill">MongoDB</div>*/}
                 </div>
               </div>
             </div>
