@@ -15,7 +15,7 @@ class IndexLayout extends Component {
               My name is Filip, I like to build stuff.
               <br />
               <br />
-              This page is a work in progress. For now, you can play with the game of life, see my <a href="/resume">résumé</a>, or visit my profiles:
+              Play with the game of life, see my <a href="/resume">résumé</a>, or visit my profiles:
               <div className="social">
                 <a href="https://www.linkedin.com/in/FilipRec"><i className="fab fa-linkedin fa-2x" /></a>
                 <a href="https://github.com/zefj"><i className="fab fa-github fa-2x" /></a>
@@ -27,7 +27,7 @@ class IndexLayout extends Component {
 
         <div className="index__content">
           { this.props.children }
-          <i className="heart far fa-heart"></i>
+          <i className="heart far fa-smile"></i>
         </div>
       </div>
     );

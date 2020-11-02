@@ -7,9 +7,14 @@ $font-family-headings: 'Poppins', sans-serif;
 
 $color-default: #3a3a3a;
 $color-muted: #6c6c6e;
-$color-accent: #ffed00;
+
+// t
+//$color-accent: #2c82ff;
+//$color-accent-2: #15c2ff;
+
+// default
 $color-accent: #04b8ff;
-//$color-accent: #ff8232; // apptimia
+$color-accent-2: $color-accent;
 
 $heading-accent-size: 5pt;
 
@@ -56,7 +61,11 @@ $heading-accent-size: 5pt;
 }
 
 .resume__header { grid-area: 1 / 1 / 2 / 8; }
-.resume__sidebar { grid-area: 2 / 1 / 8 / 3; }
+.resume__sidebar {
+  grid-area: 2 / 1 / 8 / 3;
+  display: flex;
+  flex-direction: column;
+}
 .resume__content { grid-area: 2 / 3 / 8 / 8; }
 
 .resume__header {
@@ -64,7 +73,7 @@ $heading-accent-size: 5pt;
   justify-content: space-between;
   align-items: center;
 
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .resume__name {
@@ -85,12 +94,12 @@ $heading-accent-size: 5pt;
 .resume__contact-entry {
   i {
     margin-left: 0.875rem;
-    color: $color-muted;
+    color: $color-accent;
   }
 }
 
 .resume__block {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 
   > h2 {
     margin-bottom: 0.875rem;
@@ -98,7 +107,7 @@ $heading-accent-size: 5pt;
 }
 
 .resume__content {
-  margin-left: 3rem;
+  margin-left: 2rem;
 }
 
 .resume__skills .resume__entry {
@@ -124,14 +133,14 @@ $heading-accent-size: 5pt;
 
 .resume__primary-skills {
   .resume__skill {
-    background: change-color($color-accent, $alpha: 0.35);
+    background: change-color($color-accent-2, $alpha: 0.35);
   }
 }
 
 
 .resume__secondary-skills {
   .resume__skill {
-    background: change-color($color-accent, $alpha: 0.25);
+    background: change-color($color-accent-2, $alpha: 0.25);
   }
 }
 
@@ -172,13 +181,28 @@ $heading-accent-size: 5pt;
 
 .resume__entry-description {
   color: $color-muted;
-  line-height: 1.5;
+  line-height: 1.2;
+}
+
+.resume__entry-summary {
+  //line-height: 1.5;
+}
+
+.resume__entry-keywords {
+  display: none;
+  line-height: 1;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  margin: 0.5rem 0;
+  padding: 0.2rem;
+  background-color: #e6e6e6;
 }
 
 .gdpr-consent {
-  line-height: 1.2;
+  line-height: 1;
   font-size: 0.6rem;
   color: $color-muted;
+  margin-top: auto;
 }
 
 @media print {

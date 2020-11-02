@@ -76,8 +76,8 @@ class Controls extends Component {
                 <input
                   id="speed"
                   type="range"
-                  min="1" // just max speed, this is essentially as fast as your computer can handle
-                  max="100"
+                  min="1"
+                  max="101"
                   step="5"
                   value={100 - this.props.speed}
                   onChange={(event) => { event.target.value && this.props.onSpeedChanged(100 - parseInt(event.target.value)) }}

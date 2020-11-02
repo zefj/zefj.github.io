@@ -36,8 +36,8 @@ export const Resume = () => {
 
           <div className="resume__sidebar">
             <div className="resume__about resume__block">
-              A developer with hands-on experience with the full stack and life cycle of projects in the health care and
-              online booking industry.
+              A self-motivated developer experienced in the full stack and life cycle of projects in the health care and
+              online booking industry, passionate about quality and with exceptional attention to detail. Always eager to get involved and excited about a challenge.
             </div>
 
             <div className="resume__skills resume__block">
@@ -48,34 +48,39 @@ export const Resume = () => {
                   <div className="resume__skill">JavaScript</div>
                   <div className="resume__skill">PHP</div>
                   <div className="resume__skill">React</div>
+                  <div className="resume__skill">Redux</div>
                   <div className="resume__skill">CSS</div>
                   <div className="resume__skill">SQL</div>
+                  <div className="resume__skill">Git</div>
                   <div className="resume__skill">Webpack</div>
+                  <div className="resume__skill">CI/CD</div>
+                  <div className="resume__skill">DDD</div>
                 </div>
               </div>
 
               <div className="resume__secondary-skills resume__entry">
-                <div className="resume__skills-description">Built things with:</div>
+                <div className="resume__skills-description">Familiar with:</div>
                 <div className="resume__skills-container">
                   <div className="resume__skill">Node.js</div>
+                  <div className="resume__skill">TypeScript</div>
                   <div className="resume__skill">Java</div>
                   <div className="resume__skill">Nginx</div>
                   <div className="resume__skill">Redis</div>
                   <div className="resume__skill">Docker</div>
                   <div className="resume__skill">Ansible</div>
+                  <div className="resume__skill">OAuth2</div>
                 </div>
               </div>
 
-              <div className="resume__tertiary-skills resume__entry">
-                <div className="resume__skills-description">Played with:</div>
-                <div className="resume__skills-container">
-                  <div className="resume__skill">TypeScript</div>
-                  {/*<div className="resume__skill">C++</div>*/}
-                  <div className="resume__skill">AWS</div>
-                  <div className="resume__skill">RabbitMQ</div>
-                  {/*<div className="resume__skill">MongoDB</div>*/}
-                </div>
-              </div>
+              {/*<div className="resume__tertiary-skills resume__entry">*/}
+              {/*  <div className="resume__skills-description">Played with:</div>*/}
+              {/*  <div className="resume__skills-container">*/}
+              {/*    /!*<div className="resume__skill">C++</div>*!/*/}
+              {/*    <div className="resume__skill">AWS</div>*/}
+              {/*    <div className="resume__skill">RabbitMQ</div>*/}
+              {/*    /!*<div className="resume__skill">MongoDB</div>*!/*/}
+              {/*  </div>*/}
+              {/*</div>*/}
             </div>
 
             <div className="resume__hobby resume__block">
@@ -100,6 +105,8 @@ export const Resume = () => {
               {/*  <div className="resume__entry-description">Elementary proficiency</div>*/}
               {/*</div>*/}
             </div>
+
+            <GdprConsent />
           </div>
 
           <div className="resume__content">
@@ -154,8 +161,6 @@ export const Resume = () => {
             </div>
           </div>
         </div>
-
-        <GdprConsent />
       </div>
     </div>
   );
