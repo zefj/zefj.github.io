@@ -23,6 +23,7 @@ const {
   canonicalURL,
   pubDatetime,
   modDatetime,
+  exactPublishedAtUnknown,
   tags,
 } = post.data;
 
@@ -70,6 +71,7 @@ const layoutProps = {
     <Datetime
       pubDatetime={pubDatetime}
       modDatetime={modDatetime}
+      exactPublishedAtUnknown={exactPublishedAtUnknown}
       size="lg"
       className="my-2"
     />

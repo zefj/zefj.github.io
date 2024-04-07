@@ -37,4 +37,8 @@ export default defineConfig({
     },
   },
   scopedStyleStrategy: "where",
+  redirects: {
+    "/blog/compiling-custom-raspberry-pi-kernel-with-kedei-35/":
+      "/posts/compiling-custom-raspberry-pi-kernel-with-kedei-35/",
+  },
 });

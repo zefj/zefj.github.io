@@ -3,6 +3,7 @@ import { LOCALE } from "@config";
 interface DatetimesProps {
   pubDatetime: string | Date;
   modDatetime: string | Date | undefined | null;
+  exactPublishedAtUnknown?: boolean | undefined;
 }
 
 interface Props extends DatetimesProps {
@@ -13,6 +14,7 @@ interface Props extends DatetimesProps {
 export default function Datetime({
   pubDatetime,
   modDatetime,
+  exactPublishedAtUnknown,
   size = "sm",
   className,
 }: Props) {
@@ -39,16 +41,31 @@ export default function Datetime({
         <FormattedDatetime
           pubDatetime={pubDatetime}
           modDatetime={modDatetime}
+          exactPublishedAtUnknown={exactPublishedAtUnknown}
         />
       </span>
     </div>
   );
 }
 
-const FormattedDatetime = ({ pubDatetime, modDatetime }: DatetimesProps) => {
-  const myDatetime = new Date(
-    modDatetime && modDatetime > pubDatetime ? modDatetime : pubDatetime
-  );
+const FormattedDatetime = ({
+  pubDatetime,
+  modDatetime,
+  exactPublishedAtUnknown,
+}: DatetimesProps) => {
+  const useUpdatedAt = modDatetime && modDatetime > pubDatetime;
+
+  const myDatetime = new Date(useUpdatedAt ? modDatetime : pubDatetime);
+
+  if (!useUpdatedAt && exactPublishedAtUnknown) {
+    return (
+      <>
+        <time dateTime={myDatetime.toISOString()}>
+          Somewhere in {myDatetime.getFullYear()}
+        </time>
+      </>
+    );
+  }
 
   const date = myDatetime.toLocaleDateString(LOCALE.langTag, {
     year: "numeric",
