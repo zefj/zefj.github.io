@@ -13,7 +13,6 @@ export async function GET() {
     items: sortedPosts.map(({ data, slug }) => ({
       link: `posts/${slug}/`,
       title: data.title,
-      description: data.description,
       pubDate: new Date(data.updatedAt ?? data.publishedAt),
     })),
   });

@@ -8,7 +8,6 @@ featured: true
 draft: false
 tags:
   - electronics
-description: Compiling custom Raspberry Pi kernel with KeDei 3.5" touchscreen V2 drivers to fix an issue with inverted colours.
 ---
 
 I wanted to save a couple of bucks on a Raspberry Pi touchscreen, so I ordered one off aliexpress, thinking it would be a Waveshare knock-off, compatible with their drivers, fbtft or something. I was hoping for an easy set up, but that certainly was not the case. What I received was a **KeDei 3.5 inch SPI TFT LCD, version 2**. If you have one as well, you already probably know there's a difference between V1 and V2. If you don't, there's not much for you to read here.

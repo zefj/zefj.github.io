@@ -19,7 +19,6 @@ const posts = defineCollection({
         })
         .or(z.string())
         .optional(),
-      description: z.string(),
       canonicalURL: z.string().optional(),
     }),
 });

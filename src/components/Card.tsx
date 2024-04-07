@@ -9,7 +9,7 @@ type Props = {
 };
 
 export default function Card({ href, post, secHeading = true }: Props) {
-  const { title, tags, description } = post.data;
+  const { title } = post.data;
 
   const headerProps = {
     style: { viewTransitionName: slugifyStr(title) },
@@ -30,8 +30,6 @@ export default function Card({ href, post, secHeading = true }: Props) {
       </a>
 
       <PostMetadata post={post} />
-
-      <p>{description}</p>
     </li>
   );
 }

@@ -3,7 +3,7 @@ import type { Site, SocialObjects } from "./types";
 export const SITE: Site = {
   website: "https://frec.pl", // replace this with your deployed domain
   author: "Filip Rec",
-  desc: "My piece of the Internet.",
+  desc: "My contribution to the Internet pollution",
   title: "frec.pl",
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
 };
