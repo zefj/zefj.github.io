@@ -9,6 +9,7 @@ import Card from "@components/Card";
 import Socials from "@components/Socials.astro";
 import getSortedPosts from "@utils/getSortedPosts";
 import { SOCIALS } from "@config";
+import Main from "@layouts/Main.astro";
 
 const posts = await getCollection("blog");
 
@@ -21,7 +22,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 
 <Layout>
   <Header />
-  <main id="main-content">
+  <Main>
     <section id="hero">
       <h1>Mingalaba</h1>
       <a
@@ -126,7 +127,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
         </svg>
       </LinkButton>
     </div>
-  </main>
+  </Main>
 
   <Footer />
 </Layout>

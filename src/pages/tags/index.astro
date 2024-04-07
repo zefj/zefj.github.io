@@ -15,10 +15,19 @@ let tags = getUniqueTags(posts);
 
 <Layout title={`Tags | ${SITE.title}`}>
   <Header activeNav="tags" />
-  <Main pageTitle="Tags" pageDesc="All the tags used in posts.">
-    <ul>
+  <Main>
+    <Fragment slot="title">
+      <span>Tags</span>
+    </Fragment>
+
+    <Fragment slot="description">
+      Oh you sneaky hacker, how did you get here? Anyway, here's a list of all
+      tags:
+    </Fragment>
+
+    <div class="mt-6">
       {tags.map(({ tag }) => <Tag {tag} size="lg" withTransition />)}
-    </ul>
+    </div>
   </Main>
   <Footer />
 </Layout>

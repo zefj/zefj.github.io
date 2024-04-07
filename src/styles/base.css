@@ -98,7 +98,6 @@
     @apply hidden;
   }
 
-  /* ===== scrollbar ===== */
   html {
     overflow-y: scroll;
   }
