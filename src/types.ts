@@ -1,5 +1,4 @@
 import type socialIcons from "@assets/socialIcons";
-import type { SearchItem } from "@components/Search";
 import type { CollectionEntry } from "astro:content";
 
 export type Site = {
@@ -20,4 +19,4 @@ export type SocialObjects = {
   linkTitle: string;
 }[];
 
-export type Post = CollectionEntry<"blog"> | SearchItem;
+export type Post = CollectionEntry<"blog">;

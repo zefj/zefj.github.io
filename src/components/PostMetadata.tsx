@@ -15,7 +15,7 @@ export default function PostMetadata({ post, size }: Props) {
       <PublishDate post={post} size={size} dividerAfter />
 
       {tags.map(tag => {
-        return <Tag tag={tag} size={size} />;
+        return <Tag key={tag} tag={tag} size={size} />;
       })}
     </div>
   );
