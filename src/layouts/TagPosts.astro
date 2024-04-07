@@ -48,5 +48,5 @@ const { currentPage, totalPages, paginatedPosts, tag } = Astro.props;
     nextUrl={`/tags/${tag}/${currentPage + 1}/`}
   />
 
-  <Footer noMarginTop={totalPages > 1} />
+  <Footer />
 </Layout>
