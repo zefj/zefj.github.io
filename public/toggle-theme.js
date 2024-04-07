@@ -26,7 +26,13 @@ function setPreference() {
 function reflectPreference() {
   document.firstElementChild.setAttribute("data-theme", themeValue);
 
-  document.querySelector("#theme-btn")?.setAttribute("aria-label", themeValue);
+  const toggle = document.querySelector("#theme-button");
+
+  if (toggle) {
+    toggle.dataset.darkMode = themeValue === "dark" ? "true" : "false";
+    toggle.querySelector("input").checked =
+      themeValue === "dark" ? true : false;
+  }
 
   // Get a reference to the body element
   const body = document.body;
@@ -55,10 +61,12 @@ window.onload = () => {
     reflectPreference();
 
     // now this script can find and listen for clicks on the control
-    document.querySelector("#theme-btn")?.addEventListener("click", () => {
-      themeValue = themeValue === "light" ? "dark" : "light";
-      setPreference();
-    });
+    document
+      .querySelector("#theme-button input")
+      ?.addEventListener("change", () => {
+        themeValue = themeValue === "light" ? "dark" : "light";
+        setPreference();
+      });
   }
 
   setThemeFeature();
