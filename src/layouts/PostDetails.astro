@@ -2,14 +2,14 @@
 import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
-import type { CollectionEntry } from "astro:content";
 import { slugifyStr } from "@utils/slugify";
 import { SITE } from "@config";
 import PostMetadata from "@components/PostMetadata";
 import Main from "@layouts/Main.astro";
+import type { Post } from "types";
 
 export interface Props {
-  post: CollectionEntry<"blog">;
+  post: Post;
 }
 
 const { post } = Astro.props;

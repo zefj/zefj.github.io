@@ -1,11 +1,11 @@
-import type { CollectionEntry } from "astro:content";
 import postFilter from "./postFilter";
+import type { Post } from "types";
 
 interface Tag {
   tag: string;
 }
 
-const getUniqueTags = (posts: CollectionEntry<"blog">[]) => {
+const getUniqueTags = (posts: Post[]) => {
   const tags: Tag[] = posts
     .filter(postFilter)
     .flatMap(post => post.data.tags)

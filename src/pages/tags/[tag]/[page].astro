@@ -1,13 +1,14 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
+import { getCollection } from "astro:content";
 import TagPosts from "@layouts/TagPosts.astro";
 import getUniqueTags from "@utils/getUniqueTags";
 import getPostsByTag from "@utils/getPostsByTag";
 import getPageNumbers from "@utils/getPageNumbers";
 import getPagination from "@utils/getPagination";
+import type { Post } from "types";
 
 export interface Props {
-  post: CollectionEntry<"blog">;
+  post: Post;
   tag: string;
 }
 
