@@ -7,9 +7,9 @@ import getPageNumbers from "@utils/getPageNumbers";
 import getPagination from "@utils/getPagination";
 import type { Post } from "types";
 
-export interface Props {
+type Props = {
   post: Post;
-}
+};
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts", ({ data }) => !data.draft);

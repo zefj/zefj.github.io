@@ -8,12 +8,12 @@ import Pagination from "@components/Pagination.astro";
 import { SITE } from "@config";
 import type { Post } from "types";
 
-export interface Props {
+type Props = {
   currentPage: number;
   totalPages: number;
   paginatedPosts: Post[];
   tag: string;
-}
+};
 
 const { currentPage, totalPages, paginatedPosts, tag } = Astro.props;
 ---

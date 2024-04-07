@@ -1,8 +1,8 @@
-export interface Props {
+type Props = {
   tag: string;
   size?: "sm" | "lg";
   withTransition?: boolean;
-}
+};
 
 export default function Tag({
   tag,

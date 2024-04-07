@@ -2,11 +2,11 @@ import { slugifyStr } from "@utils/slugify";
 import PostMetadata from "@components/PostMetadata";
 import type { Post } from "types";
 
-export interface Props {
+type Props = {
   href?: string;
   post: Post;
   secHeading?: boolean;
-}
+};
 
 export default function Card({ href, post, secHeading = true }: Props) {
   const { title, tags, description } = post.data;

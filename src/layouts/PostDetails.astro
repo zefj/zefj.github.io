@@ -8,9 +8,9 @@ import PostMetadata from "@components/PostMetadata";
 import Main from "@layouts/Main.astro";
 import type { Post } from "types";
 
-export interface Props {
+type Props = {
   post: Post;
-}
+};
 
 const { post } = Astro.props;
 
