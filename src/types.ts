@@ -19,4 +19,4 @@ export type SocialObjects = {
   linkTitle: string;
 }[];
 
-export type Post = CollectionEntry<"blog">;
+export type Post = CollectionEntry<"posts">;
