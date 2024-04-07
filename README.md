@@ -1,68 +1,158 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# AstroPaper 📄
 
-## Available Scripts
+![AstroPaper](public/astropaper-og.jpg)
+![Typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![GitHub](https://img.shields.io/github/license/satnaing/astro-paper?color=%232F3741&style=for-the-badge)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white&style=for-the-badge)](https://conventionalcommits.org)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge)](http://commitizen.github.io/cz-cli/)
 
-In the project directory, you can run:
+AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro blog theme. This theme is designed and crafted based on [my personal blog](https://satnaing.dev/blog).
 
-### `npm start`
+This theme follows best practices and provides accessibility out of the box. Light and dark mode are supported by default. Moreover, additional color schemes can also be configured.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This theme is self-documented \_ which means articles/posts in this theme can also be considered as documentations. Read [the blog posts](https://astro-paper.pages.dev/posts/) or check [the README Documentation Section](#-documentation) for more info.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## 🔥 Features
 
-### `npm test`
+- [x] type-safe markdown
+- [x] super fast performance
+- [x] accessible (Keyboard/VoiceOver)
+- [x] responsive (mobile ~ desktops)
+- [x] SEO-friendly
+- [x] light & dark mode
+- [x] fuzzy search
+- [x] draft posts & pagination
+- [x] sitemap & rss feed
+- [x] followed best practices
+- [x] highly customizable
+- [x] dynamic OG image generation for blog posts [#15](https://github.com/satnaing/astro-paper/pull/15) ([Blog Post](https://astro-paper.pages.dev/posts/dynamic-og-image-generation-in-astropaper-blog-posts/))
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+_Note: I've tested screen-reader accessibility of AstroPaper using **VoiceOver** on Mac and **TalkBack** on Android. I couldn't test all other screen-readers out there. However, accessibility enhancements in AstroPaper should be working fine on others as well._
 
-### `npm run build`
+## ✅ Lighthouse Score
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<p align="center">
+  <a href="https://pagespeed.web.dev/report?url=https%3A%2F%2Fastro-paper.pages.dev%2F&form_factor=desktop">
+    <img width="710" alt="AstroPaper Lighthouse Score" src="AstroPaper-lighthouse-score.svg">
+  <a>
+</p>
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## 🚀 Project Structure
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Inside of AstroPaper, you'll see the following folders and files:
 
-### `npm run eject`
+```bash
+/
+├── public/
+│   ├── assets/
+│   │   └── logo.svg
+│   │   └── logo.png
+│   └── favicon.svg
+│   └── astropaper-og.jpg
+│   └── robots.txt
+│   └── toggle-theme.js
+├── src/
+│   ├── assets/
+│   │   └── socialIcons.ts
+│   ├── components/
+│   ├── content/
+│   │   |  blog/
+│   │   |    └── some-blog-posts.md
+│   │   └── config.ts
+│   ├── layouts/
+│   └── pages/
+│   └── styles/
+│   └── utils/
+│   └── config.ts
+│   └── types.ts
+└── package.json
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Any static assets, like images, can be placed in the `public/` directory.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+All blog posts are stored in `src/content/blog` directory.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 📖 Documentation
 
-## Learn More
+Documentation can be read in two formats\_ _markdown_ & _blog post_.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Configuration - [markdown](src/content/blog/how-to-configure-astropaper-theme.md) | [blog post](https://astro-paper.pages.dev/posts/how-to-configure-astropaper-theme/)
+- Add Posts - [markdown](src/content/blog/adding-new-post.md) | [blog post](https://astro-paper.pages.dev/posts/adding-new-posts-in-astropaper-theme/)
+- Customize Color Schemes - [markdown](src/content/blog/customizing-astropaper-theme-color-schemes.md) | [blog post](https://astro-paper.pages.dev/posts/customizing-astropaper-theme-color-schemes/)
+- Predefined Color Schemes - [markdown](src/content/blog/predefined-color-schemes.md) | [blog post](https://astro-paper.pages.dev/posts/predefined-color-schemes/)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+> For AstroPaper v1, check out [this branch](https://github.com/satnaing/astro-paper/tree/astro-paper-v1) and this [live URL](https://astro-paper-v1.astro-paper.pages.dev/)
 
-### Code Splitting
+## 💻 Tech Stack
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+**Main Framework** - [Astro](https://astro.build/)  
+**Type Checking** - [TypeScript](https://www.typescriptlang.org/)  
+**Component Framework** - [ReactJS](https://reactjs.org/)  
+**Styling** - [TailwindCSS](https://tailwindcss.com/)  
+**UI/UX** - [Figma](https://figma.com)  
+**Fuzzy Search** - [FuseJS](https://fusejs.io/)  
+**Icons** - [Boxicons](https://boxicons.com/) | [Tablers](https://tabler-icons.io/)  
+**Code Formatting** - [Prettier](https://prettier.io/)  
+**Deployment** - [Cloudflare Pages](https://pages.cloudflare.com/)  
+**Illustration in About Page** - [https://freesvgillustration.com](https://freesvgillustration.com/)  
+**Linting** - [ESLint](https://eslint.org)
 
-### Analyzing the Bundle Size
+## 👨🏻‍💻 Running Locally
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+The easiest way to run this project locally is to run the following command in your desired directory.
 
-### Making a Progressive Web App
+```bash
+# npm 6.x
+npm create astro@latest --template satnaing/astro-paper
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+# npm 7+, extra double-dash is needed:
+npm create astro@latest -- --template satnaing/astro-paper
 
-### Advanced Configuration
+# yarn
+yarn create astro --template satnaing/astro-paper
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+## Google Site Verification (optional)
 
-### Deployment
+You can easily add your [Google Site Verification HTML tag](https://support.google.com/webmasters/answer/9008080#meta_tag_verification&zippy=%2Chtml-tag) in AstroPaper using environment variable. This step is optional. If you don't add the following env variable, the google-site-verification tag won't appear in the html `<head>` section.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+```bash
+# in your environment variable file (.env)
+PUBLIC_GOOGLE_SITE_VERIFICATION=your-google-site-verification-value
+```
 
-### `npm run build` fails to minify
+## 🧞 Commands
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+All commands are run from the root of the project, from a terminal:
+
+> **_Note!_** For `Docker` commands we must have it [installed](https://docs.docker.com/engine/install/) in your machine.
+
+| Command                              | Action                                                                                                                           |
+| :----------------------------------- | :------------------------------------------------------------------------------------------------------------------------------- |
+| `npm install`                        | Installs dependencies                                                                                                            |
+| `npm run dev`                        | Starts local dev server at `localhost:4321`                                                                                      |
+| `npm run build`                      | Build your production site to `./dist/`                                                                                          |
+| `npm run preview`                    | Preview your build locally, before deploying                                                                                     |
+| `npm run format:check`               | Check code format with Prettier                                                                                                  |
+| `npm run format`                     | Format codes with Prettier                                                                                                       |
+| `npm run sync`                       | Generates TypeScript types for all Astro modules. [Learn more](https://docs.astro.build/en/reference/cli-reference/#astro-sync). |
+| `npm run cz`                         | Commit code changes with commitizen                                                                                              |
+| `npm run lint`                       | Lint with ESLint                                                                                                                 |
+| `docker compose up -d`               | Run AstroPaper on docker, You can access with the same hostname and port informed on `dev` command.                              |
+| `docker compose run app npm install` | You can run any command above into the docker container.                                                                         |
+
+> **_Warning!_** Windows PowerShell users may need to install the [concurrently package](https://www.npmjs.com/package/concurrently) if they want to [run diagnostics](https://docs.astro.build/en/reference/cli-reference/#astro-check) during development (`astro check --watch & astro dev`). For more info, see [this issue](https://github.com/satnaing/astro-paper/issues/113).
+
+## ✨ Feedback & Suggestions
+
+If you have any suggestions/feedback, you can contact me via [my email](mailto:contact@satnaing.dev). Alternatively, feel free to open an issue if you find bugs or want to request new features.
+
+## 📜 License
+
+Licensed under the MIT License, Copyright © 2023
+
+---
+
+Made with 🤍 by [Sat Naing](https://satnaing.dev) 👨🏻‍💻 and [contributors](https://github.com/satnaing/astro-paper/graphs/contributors).
