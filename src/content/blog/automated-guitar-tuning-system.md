@@ -1,6 +1,6 @@
 ---
 author: Filip Rec
-pubDatetime: 2016-01-01T00:00:00Z
+publishedAt: 2016-01-01T00:00:00Z
 exactPublishedAtUnknown: true
 title: Automated guitar tuning system
 slug: automated-guitar-tuning-system

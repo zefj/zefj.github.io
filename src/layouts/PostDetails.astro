@@ -3,7 +3,7 @@ import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Tag from "@components/Tag.astro";
-import Datetime from "@components/Datetime";
+import PublishDate from "@components/PublishDate";
 import type { CollectionEntry } from "astro:content";
 import { slugifyStr } from "@utils/slugify";
 import ShareLinks from "@components/ShareLinks.astro";
@@ -21,9 +21,8 @@ const {
   description,
   ogImage,
   canonicalURL,
-  pubDatetime,
-  modDatetime,
-  exactPublishedAtUnknown,
+  publishedAt,
+  updatedAt,
   tags,
 } = post.data;
 
@@ -39,8 +38,8 @@ const layoutProps = {
   title: `${title} | ${SITE.title}`,
   author,
   description,
-  pubDatetime,
-  modDatetime,
+  publishedAt,
+  updatedAt,
   canonicalURL,
   ogImage: ogUrl,
   scrollSmooth: true,
@@ -68,13 +67,9 @@ const layoutProps = {
   </div>
   <main id="main-content">
     <h1 transition:name={slugifyStr(title)} class="post-title">{title}</h1>
-    <Datetime
-      pubDatetime={pubDatetime}
-      modDatetime={modDatetime}
-      exactPublishedAtUnknown={exactPublishedAtUnknown}
-      size="lg"
-      className="my-2"
-    />
+    <div class="my-2">
+      <PublishDate frontmatter={post.data} size="lg" />
+    </div>
     <article id="article" role="article" class="prose mx-auto mt-8 max-w-3xl">
       <Content />
     </article>
