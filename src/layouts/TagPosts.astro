@@ -4,18 +4,15 @@ import Main from "@layouts/Main.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Card from "@components/Card";
-import Pagination from "@components/Pagination.astro";
 import { SITE } from "@config";
 import type { Post } from "types";
 
 type Props = {
-  currentPage: number;
-  totalPages: number;
-  paginatedPosts: Post[];
+  posts: Post[];
   tag: string;
 };
 
-const { currentPage, totalPages, paginatedPosts, tag } = Astro.props;
+const { posts, tag } = Astro.props;
 ---
 
 <Layout title={`Tag: ${tag} | ${SITE.title}`}>
@@ -30,7 +27,7 @@ const { currentPage, totalPages, paginatedPosts, tag } = Astro.props;
 
     <ul>
       {
-        paginatedPosts.map(post => {
+        posts.map(post => {
           const { slug } = post;
 
           return <Card href={`/posts/${slug}/`} post={post} />;
@@ -38,15 +35,6 @@ const { currentPage, totalPages, paginatedPosts, tag } = Astro.props;
       }
     </ul>
   </Main>
-
-  <Pagination
-    {currentPage}
-    {totalPages}
-    prevUrl={`/tags/${tag}${
-      currentPage - 1 !== 1 ? "/" + (currentPage - 1) : ""
-    }/`}
-    nextUrl={`/tags/${tag}/${currentPage + 1}/`}
-  />
 
   <Footer />
 </Layout>
