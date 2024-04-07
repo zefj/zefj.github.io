@@ -1,33 +1,38 @@
 import { LOCALE } from "@config";
-import type { CollectionEntry } from "astro:content";
+import type { Post } from "types";
 
 type Props = {
-  frontmatter: CollectionEntry<"blog">["data"];
+  post: Post;
   size?: "sm" | "lg";
+  dividerAfter?: boolean;
 };
 
-export default function PublishDate({ frontmatter, size = "sm" }: Props) {
-  const { publishedAt, updatedAt, exactPublishedAtUnknown } = frontmatter;
+export default function PublishDate({
+  post,
+  size = "sm",
+  dividerAfter = false,
+}: Props) {
+  const { publishedAt, updatedAt, exactPublishedAtUnknown } = post.data;
 
   return (
-    <div className="flex items-center space-x-2 opacity-80">
-      <span className={`${size === "sm" ? "text-sm" : "text-base"}`}>
-        <span className="sr-only">Published:</span>
+    <span className={`${size === "sm" ? "text-sm" : "text-base"}`}>
+      <span className="sr-only">Published:</span>
 
-        <FormattedDate
-          datetime={publishedAt}
-          exactUnknown={exactPublishedAtUnknown}
-        />
+      <FormattedDate
+        datetime={publishedAt}
+        exactUnknown={exactPublishedAtUnknown}
+      />
 
-        {updatedAt && (
-          <>
-            <span className="mx-1">•</span>
-            <span className="mr-1 font-semibold">Updated:</span>
-            <FormattedDate datetime={updatedAt} />
-          </>
-        )}
-      </span>
-    </div>
+      {updatedAt && (
+        <>
+          <span className="mx-1">•</span>
+          <span className="mr-1 font-semibold">Updated:</span>
+          <FormattedDate datetime={updatedAt} />
+        </>
+      )}
+
+      {dividerAfter && <span className="mx-1">•</span>}
+    </span>
   );
 }
 

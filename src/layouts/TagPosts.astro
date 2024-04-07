@@ -13,25 +13,26 @@ export interface Props {
   totalPages: number;
   paginatedPosts: CollectionEntry<"blog">[];
   tag: string;
-  tagName: string;
 }
 
-const { currentPage, totalPages, paginatedPosts, tag, tagName } = Astro.props;
+const { currentPage, totalPages, paginatedPosts, tag } = Astro.props;
 ---
 
-<Layout title={`Tag: ${tagName} | ${SITE.title}`}>
+<Layout title={`Tag: ${tag} | ${SITE.title}`}>
   <Header activeNav="tags" />
   <Main
-    pageTitle={[`Tag:`, `${tagName}`]}
+    pageTitle={[`Tag:`, `${tag}`]}
     titleTransition={tag}
-    pageDesc={`All the articles with the tag "${tagName}".`}
+    pageDesc={`All the articles with the tag "${tag}".`}
   >
     <h1 slot="title" transition:name={tag}>{`Tag:${tag}`}</h1>
     <ul>
       {
-        paginatedPosts.map(({ data, slug }) => (
-          <Card href={`/posts/${slug}/`} frontmatter={data} />
-        ))
+        paginatedPosts.map(post => {
+          const { slug } = post;
+
+          return <Card href={`/posts/${slug}/`} post={post} />;
+        })
       }
     </ul>
   </Main>

@@ -10,15 +10,15 @@ export async function getStaticPaths() {
 
   const tags = getUniqueTags(posts);
 
-  return tags.map(({ tag, tagName }) => {
+  return tags.map(({ tag }) => {
     return {
       params: { tag },
-      props: { tag, tagName, posts },
+      props: { tag, posts },
     };
   });
 }
 
-const { tag, tagName, posts } = Astro.props;
+const { tag, posts } = Astro.props;
 
 const postsByTag = getPostsByTag(posts, tag);
 
@@ -29,4 +29,4 @@ const pagination = getPagination({
 });
 ---
 
-<TagPosts {...pagination} {tag} {tagName} />
+<TagPosts {...pagination} {tag} />
