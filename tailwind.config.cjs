@@ -119,6 +119,14 @@ module.exports = {
       typography: {
         DEFAULT: {
           css: {
+            // Set theme-aware text color on `.prose` class
+            color: {
+              skin: {
+                base: withOpacity("--color-text-base"),
+                accent: withOpacity("--color-accent"),
+                inverted: withOpacity("--color-fill"),
+              },
+            },
             // Get rid of max-width on `.prose` class
             maxWidth: "100%",
             pre: {
