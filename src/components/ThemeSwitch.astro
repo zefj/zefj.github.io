@@ -44,6 +44,10 @@ const moonCrater = `url(${moonCraterImage.src})`;
   .theme-button {
     width: 56px;
   }
+  .theme-button:focus-within {
+    outline: auto;
+    outline-color: inherit;
+  }
   .switch {
     border-radius: 9999px;
     border: 1px solid #00000000;
@@ -155,7 +159,17 @@ const moonCrater = `url(${moonCraterImage.src})`;
     background-position: center;
   }
   #dark-mode {
-    display: none;
+    /* Tailwinds `sr-auto` doesn't work as expected here */
+    position: absolute;
+    border: 0;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    word-wrap: normal;
   }
   .stars {
     background-image: var(--stars);
