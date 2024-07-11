@@ -4,4 +4,4 @@ Disallow: /nogooglebot/
 User-agent: *
 Allow: /
 
-Sitemap: https://zefj.github.io/sitemap-index.xml
+Sitemap: https://frec.pl/sitemap-index.xml
