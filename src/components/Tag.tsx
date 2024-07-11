@@ -20,7 +20,7 @@ export default function Tag({
             }
           : {}
       }
-      className={`${size === "sm" ? "text-sm" : "text-base"} group relative whitespace-nowrap pr-2 underline underline-offset-4 hover:text-skin-accent focus-visible:p-1`}
+      className={`${size === "sm" ? "text-sm" : "text-base"} group relative whitespace-nowrap underline underline-offset-4 hover:text-skin-accent`}
     >
       <span>#{tag}</span>
     </a>

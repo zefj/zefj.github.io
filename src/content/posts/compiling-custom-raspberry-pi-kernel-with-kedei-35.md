@@ -4,7 +4,7 @@ publishedAt: 2015-01-01T00:00:00Z
 exactPublishedAtUnknown: true
 title: Compiling custom Raspberry Pi kernel with KeDei 3.5" touchscreen V2 drivers
 slug: compiling-custom-raspberry-pi-kernel-with-kedei-35
-featured: true
+recent: true
 draft: false
 tags:
   - electronics

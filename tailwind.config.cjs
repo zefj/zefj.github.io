@@ -119,6 +119,8 @@ module.exports = {
       typography: {
         DEFAULT: {
           css: {
+            // Get rid of max-width on `.prose` class
+            maxWidth: "100%",
             pre: {
               color: false,
             },

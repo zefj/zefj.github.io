@@ -45,7 +45,7 @@
     --color-accent: 189, 151, 106;
     --color-card: 18, 18, 18;
     --color-card-muted: 189, 151, 106;
-    --color-border: 203, 118, 118;
+    --color-border: 100, 104, 113;
 
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
@@ -89,12 +89,11 @@
 
   section,
   footer {
-    @apply mx-auto max-w-3xl px-4;
+    @apply mx-auto max-w-3xl;
   }
 
   a {
-    @apply outline-2 outline-offset-1 outline-skin-fill
-    focus-visible:no-underline focus-visible:outline-dashed;
+    @apply underline-offset-4;
   }
 
   svg {

@@ -2,18 +2,24 @@
 import { SOCIALS } from "@config";
 import LinkButton from "./LinkButton.astro";
 import socialIcons from "@assets/socialIcons";
+import { cn } from "@utils/cn";
 
 type Props = {
   rss?: boolean;
+  horizontal?: boolean;
 };
 
-const { rss = false } = Astro.props;
+const { rss = false, horizontal = false } = Astro.props;
 ---
 
-<div class="flex flex-wrap justify-center gap-1">
+<div
+  class={cn("flex flex-wrap justify-center gap-4", {
+    "flex-col gap-1": horizontal,
+  })}
+>
   {
     rss && (
-      <LinkButton href="/rss.xml" className="p-2" title="RSS Feed">
+      <LinkButton href="/rss.xml" title="RSS Feed">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 scale-110">
           <>
             <path d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z" />
@@ -28,8 +34,14 @@ const { rss = false } = Astro.props;
 
   {
     SOCIALS.filter(social => social.active).map(social => (
-      <LinkButton href={social.href} className="p-2" title={social.linkTitle}>
+      <LinkButton
+        href={social.href}
+        title={social.linkTitle}
+        className={cn({ "flex max-w-max items-center gap-2": horizontal })}
+      >
         <Fragment set:html={socialIcons[social.name]} />
+        {horizontal && <span>{social.name}</span>}
+
         <span class="sr-only">{social.linkTitle}</span>
       </LinkButton>
     ))

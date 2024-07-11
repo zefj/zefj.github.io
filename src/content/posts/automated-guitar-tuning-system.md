@@ -4,7 +4,7 @@ publishedAt: 2016-01-01T00:00:00Z
 exactPublishedAtUnknown: true
 title: Automated guitar tuning system
 slug: automated-guitar-tuning-system
-featured: true
+recent: true
 draft: false
 tags:
   - electronics

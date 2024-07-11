@@ -14,9 +14,11 @@ export default function PostMetadata({ post, size }: Props) {
     <div className="flex flex-wrap items-center">
       <PublishDate post={post} size={size} dividerAfter />
 
-      {tags.map(tag => {
-        return <Tag key={tag} tag={tag} size={size} />;
-      })}
+      <div className="flex gap-1">
+        {tags.map(tag => {
+          return <Tag key={tag} tag={tag} size={size} />;
+        })}
+      </div>
     </div>
   );
 }
