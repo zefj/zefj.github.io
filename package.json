@@ -1,7 +1,9 @@
 {
   "version": "4.2.0",
   "scripts": {
-    "deploy": "gh-pages -b master -d dist",
+    "predeploy": "rm -rf ./dist && yarn build && yarn add-domain",
+    "add-domain": "echo \"frec.pl\" > ./dist/CNAME",
+    "deploy": "yarn predeploy && gh-pages -b master -d dist",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build && jampack ./dist",
