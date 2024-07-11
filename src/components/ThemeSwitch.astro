@@ -44,7 +44,7 @@ const moonCrater = `url(${moonCraterImage.src})`;
   .theme-button {
     width: 56px;
   }
-  .theme-button:focus-within {
+  .theme-button:focus-within:has(:focus-visible) {
     outline: auto;
     outline-color: inherit;
   }
