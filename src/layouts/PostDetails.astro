@@ -14,7 +14,7 @@ type Props = {
 
 const { post } = Astro.props;
 
-const { title, author, ogImage, canonicalURL, publishedAt, updatedAt, tags } =
+const { title, author, ogImage, canonicalURL, publishedAt, updatedAt } =
   post.data;
 
 const { Content } = await post.render();
