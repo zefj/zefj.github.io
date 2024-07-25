@@ -1,9 +1,0 @@
-.game-of-life-wrapper {
-  overflow: hidden;
-}
-
-.game-of-life-wrapper > canvas {
-  pointer-events: none;
-  height: 100vh;
-  width: 100vw;
-}

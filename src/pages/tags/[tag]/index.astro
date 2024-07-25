@@ -1,0 +1,25 @@
+---
+import { getCollection } from "astro:content";
+import TagPosts from "@layouts/TagPosts.astro";
+import getPostsByTag from "@utils/getPostsByTag";
+import getUniqueTags from "@utils/getUniqueTags";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+
+  const tags = getUniqueTags(posts);
+
+  return tags.map(({ tag }) => {
+    return {
+      params: { tag },
+      props: { tag, posts },
+    };
+  });
+}
+
+const { tag, posts } = Astro.props;
+
+const postsByTag = getPostsByTag(posts, tag);
+---
+
+<TagPosts posts={postsByTag} {tag} />

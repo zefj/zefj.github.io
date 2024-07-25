@@ -1,0 +1,33 @@
+---
+import { getCollection } from "astro:content";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import Layout from "@layouts/Layout.astro";
+import Main from "@layouts/Main.astro";
+import Tag from "@components/Tag";
+import getUniqueTags from "@utils/getUniqueTags";
+import { SITE } from "@config";
+
+const posts = await getCollection("posts");
+
+let tags = getUniqueTags(posts);
+---
+
+<Layout title={`Tags | ${SITE.title}`}>
+  <Header />
+  <Main>
+    <Fragment slot="title">
+      <span>Tags</span>
+    </Fragment>
+
+    <Fragment slot="description">
+      Oh you sneaky hacker, how did you get here? Anyway, here's a list of all
+      tags:
+    </Fragment>
+
+    <div class="mt-6">
+      {tags.map(({ tag }) => <Tag {tag} size="lg" withTransition />)}
+    </div>
+  </Main>
+  <Footer />
+</Layout>

@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root,
+  html[data-theme="light"] {
+    --color-fill: 251, 254, 251;
+    --color-text-base: 40, 39, 40;
+    --color-accent: 141, 102, 56;
+    --color-card: 230, 230, 230;
+    --color-card-muted: 205, 205, 205;
+    --color-border: 236, 233, 233;
+
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  html[data-theme="dark"] {
+    --color-fill: 38, 38, 38;
+    --color-text-base: 234, 237, 243;
+    --color-accent: 189, 151, 106;
+    --color-card: 18, 18, 18;
+    --color-card-muted: 189, 151, 106;
+    --color-border: 100, 104, 113;
+
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+
+  * {
+    @apply border-border;
+    @apply outline-2 outline-offset-1 outline-skin-fill;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  body {
+    @apply flex min-h-[100svh] flex-col bg-skin-fill font-sans text-skin-base 
+    transition-colors selection:bg-skin-accent selection:bg-opacity-70 selection:text-skin-inverted;
+  }
+
+  section,
+  footer {
+    @apply mx-auto max-w-3xl;
+  }
+
+  a {
+    @apply underline-offset-4;
+  }
+
+  svg {
+    @apply inline-block h-6 w-6 fill-skin-base group-hover:fill-skin-accent;
+  }
+
+  svg.icon-tabler {
+    @apply inline-block h-6 w-6 scale-125 fill-transparent 
+    stroke-current stroke-2 opacity-90 group-hover:fill-transparent 
+    sm:scale-110;
+  }
+
+  .prose {
+    @apply text-justify 
+    prose-headings:!mb-3 
+    prose-headings:!text-skin-base 
+    prose-h3:italic 
+    prose-p:!text-skin-base 
+    prose-a:!text-skin-base 
+    hover:prose-a:text-skin-accent 
+    prose-blockquote:!border-l-skin-accent
+    prose-blockquote:border-opacity-50 
+    prose-blockquote:opacity-80
+    prose-figcaption:!text-skin-base 
+    prose-figcaption:opacity-70
+    prose-strong:!text-skin-base
+    
+    prose-code:rounded 
+    prose-code:bg-skin-card 
+    prose-code:bg-opacity-75 
+    prose-code:p-1 
+    prose-code:before:!content-none 
+    prose-code:after:!content-none
+    prose-ol:!text-skin-base 
+    prose-ul:overflow-x-clip 
+    prose-ul:!text-skin-base 
+    prose-li:marker:!text-skin-accent
+
+    prose-table:text-skin-base 
+    prose-th:text-left
+
+    prose-img:!my-2 
+    prose-img:mx-auto 
+    prose-img:border-2 
+    prose-img:border-none
+    prose-img:italic
+    prose-hr:!border-skin-line;
+  }
+  .prose a {
+    @apply break-words hover:!text-skin-accent;
+  }
+
+  .prose details {
+    @apply inline-block cursor-pointer select-none text-skin-base;
+  }
+
+  .prose summary {
+    @apply focus-outline;
+  }
+
+  .prose h2#table-of-contents + p {
+    @apply hidden;
+  }
+
+  html {
+    overflow-y: scroll;
+  }
+
+  code,
+  blockquote {
+    word-wrap: break-word;
+  }
+
+  pre > code {
+    white-space: pre;
+  }
+
+  iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@layer components {
+  .display-none {
+    @apply hidden;
+  }
+  .focus-outline {
+    @apply outline-2 outline-offset-1 outline-skin-fill focus-visible:no-underline focus-visible:outline-dashed;
+  }
+}

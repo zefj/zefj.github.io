@@ -1,0 +1,66 @@
+---
+import { SITE } from "@config";
+import Hr from "./Hr.astro";
+import ThemeSwitch from "@components/ThemeSwitch.astro";
+
+type Props = {
+  activeNav?: "posts";
+};
+
+const { activeNav } = Astro.props;
+---
+
+<header>
+  <a id="skip-to-content" href="#main-content">Skip to content</a>
+  <div class="nav-container">
+    <a href="/" class="logo whitespace-nowrap">
+      {SITE.title}
+    </a>
+    <nav id="nav-menu">
+      <ul id="menu-items" class="flex">
+        <li>
+          <a href="/posts/" class={activeNav === "posts" ? "active" : ""}>
+            Posts
+          </a>
+        </li>
+        <li>
+          <ThemeSwitch />
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <Hr />
+</header>
+
+<style>
+  #skip-to-content {
+    @apply absolute -top-full left-16 z-50 bg-skin-accent px-3 py-2 text-skin-inverted transition-all focus:top-4;
+  }
+  .nav-container {
+    @apply mx-auto flex max-w-3xl flex-row items-center justify-between px-4 py-4;
+  }
+  .logo {
+    @apply py-1 font-mono text-3xl font-bold;
+  }
+  nav {
+    @apply ml-2 flex w-full justify-end;
+  }
+  nav ul {
+    @apply gap-x-5;
+  }
+  nav ul li {
+    @apply flex items-center;
+  }
+  nav ul li a {
+    @apply font-medium hover:text-skin-accent;
+  }
+  nav a.active {
+    @apply text-skin-accent no-underline;
+  }
+  #theme-button2 {
+    @apply p-1;
+  }
+  #theme-button2 svg {
+    @apply h-6 w-6 scale-125 fill-skin-base hover:fill-skin-accent sm:scale-100;
+  }
+</style>
