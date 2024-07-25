@@ -1,4 +1,8 @@
 const primaryColorScheme = ""; // "light" | "dark"
+// Define the colours upfront instead of using `getComputedStyles` because transition
+// was getting in the way and I didn't want to delay the change.
+const darkColor = "rgb(38, 38, 38)";
+const lightColor = "rgb(251, 254, 251)";
 
 // Get theme data from local storage
 const currentTheme = localStorage.getItem("theme");
@@ -34,22 +38,10 @@ function reflectPreference() {
       themeValue === "dark" ? true : false;
   }
 
-  // Get a reference to the body element
-  const body = document.body;
-
-  // Check if the body element exists before using getComputedStyle
-  if (body) {
-    // Get the computed styles for the body element
-    const computedStyles = window.getComputedStyle(body);
-
-    // Get the background color property
-    const bgColor = computedStyles.backgroundColor;
-
-    // Set the background color in <meta theme-color ... />
-    document
-      .querySelector("meta[name='theme-color']")
-      ?.setAttribute("content", bgColor);
-  }
+  // Set the background color in <meta theme-color ... />
+  document
+    .querySelector("meta[name='theme-color']")
+    ?.setAttribute("content", themeValue === "dark" ? darkColor : lightColor);
 }
 
 // set early so no page flashes / CSS is made aware
